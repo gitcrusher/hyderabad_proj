@@ -2,6 +2,9 @@ import { useEffect, useMemo, useState } from "react";
 
 const ATTENDEE_KEY = "pulse-attendee-id";
 const ROLE_KEY = "pulse-selected-role";
+const API_BASE = import.meta.env.VITE_API_BASE || (
+  import.meta.env.PROD ? "https://hyderabad-proj.onrender.com" : ""
+);
 const ROLES = [
   { value: "student", label: "Students" },
   { value: "organizer", label: "Organizers" },
@@ -9,7 +12,7 @@ const ROLES = [
 ];
 
 async function api(path, options = {}) {
-  const response = await fetch(`${import.meta.env.VITE_API_BASE || ""}${path}`, {
+  const response = await fetch(`${API_BASE}${path}`, {
     ...options,
     headers: {
       Accept: "application/json",
@@ -387,7 +390,7 @@ function App() {
             {loading ? (
               <div className="loading-card"><span className="spinner" /><p>Finding what’s happening…</p></div>
             ) : loadError ? (
-              <div className="loading-card"><div><p><b>Campus signal is quiet.</b></p><p>{loadError}</p><p>From the project folder, start Flask with <code>.\backend\venv\Scripts\python.exe backend\app.py</code>, then retry.</p><button className="button button-quiet" type="button" onClick={() => setReloadKey((key) => key + 1)}>Retry connection <span>↻</span></button></div></div>
+              <div className="loading-card"><div><p><b>Campus signal is quiet.</b></p><p>{loadError}</p><p>The frontend connects to the campus events API on Render. Retry in a moment.</p><button className="button button-quiet" type="button" onClick={() => setReloadKey((key) => key + 1)}>Retry connection <span>↻</span></button></div></div>
             ) : filteredEvents.length ? (
               <div className="event-grid">
                 {filteredEvents.map((event) => (

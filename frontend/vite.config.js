@@ -6,7 +6,11 @@ export default defineConfig({
   server: {
     host: "127.0.0.1",
     proxy: {
-      "/api": "http://127.0.0.1:5000",
+      "/api": {
+        target: "https://hyderabad-proj.onrender.com",
+        changeOrigin: true,
+        secure: true,
+      },
     },
   },
   build: {
