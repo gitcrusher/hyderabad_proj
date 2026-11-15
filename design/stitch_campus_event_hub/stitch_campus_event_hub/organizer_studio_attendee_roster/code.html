@@ -1,0 +1,805 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_dashboard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"secondary-container":"#ec6a06","surface-container-lowest":"#0a0e18","on-primary-fixed":"#07006c","on-error":"#690005","on-secondary":"#552100","on-secondary-container":"#4a1c00","outline-variant":"#464554","tertiary-fixed-dim":"#4edea3","error-container":"#93000a","secondary-fixed":"#ffdbca","inverse-surface":"#dfe2f1","surface-variant":"#313540","primary-fixed":"#e1e0ff","on-primary-fixed-variant":"#2f2ebe","on-tertiary-container":"#000703","primary-fixed-dim":"#c0c1ff","tertiary":"#4edea3","tertiary-fixed":"#6ffbbe","on-surface-variant":"#c7c4d7","inverse-primary":"#494bd6","on-tertiary-fixed":"#002113","on-error-container":"#ffdad6","surface-container-high":"#262a35","surface-container-highest":"#313540","on-tertiary":"#003824","secondary":"#ffb690","on-tertiary-fixed-variant":"#005236","on-secondary-fixed-variant":"#783200","surface":"#0f131d","surface-container":"#1c1f2a","primary":"#c0c1ff","inverse-on-surface":"#2c303b","on-surface":"#dfe2f1","surface-tint":"#c0c1ff","surface-container-low":"#171b26","on-secondary-fixed":"#341100","outline":"#908fa0","on-background":"#dfe2f1","on-primary":"#1000a9","surface-bright":"#353944","secondary-fixed-dim":"#ffb690","error":"#ffb4ab","primary-container":"#8083ff","surface-dim":"#0f131d","tertiary-container":"#00885d","on-primary-container":"#0d0096","background":"#0f131d"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-md":"1rem","margin":"3rem","space-xs":"0.25rem","gutter-sm":"1rem","margin-sm":"1.25rem","space-xl":"2.5rem","space-lg":"1.5rem","space-sm":"0.5rem","gutter":"1.5rem"},"fontFamily":{"body-sm":["Plus Jakarta Sans"],"display-lg-mobile":["Space Grotesk"],"label-sm":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"headline-lg":["Space Grotesk"],"headline-sm":["Space Grotesk"],"label-md":["Space Grotesk"],"display-lg":["Space Grotesk"],"headline-lg-mobile":["Space Grotesk"],"headline-md":["Space Grotesk"],"label-lg":["Space Grotesk"],"body-lg":["Plus Jakarta Sans"]},"fontSize":{"body-sm":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"400"}],"display-lg-mobile":["38px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-sm":["10px",{"lineHeight":"12px","letterSpacing":"0.08em","fontWeight":"700"}],"body-md":["15px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"headline-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"600"}],"headline-sm":["18px",{"lineHeight":"26px","letterSpacing":"0em","fontWeight":"600"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.06em","fontWeight":"600"}],"display-lg":["56px",{"lineHeight":"64px","letterSpacing":"-0.03em","fontWeight":"700"}],"headline-lg-mobile":["28px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"18px","letterSpacing":"0.04em","fontWeight":"600"}],"body-lg":["18px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"400"}]}}}};</script></head><body class="bg-background font-body-md text-body-md text-on-surface min-h-screen selection:bg-primary-container selection:text-on-primary-container"><aside class="fixed left-0 top-0 h-full w-72 bg-surface-container-lowest z-50 flex flex-col justify-between py-space-lg px-space-md shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="flex flex-col gap-space-lg"><div class="flex items-center gap-space-sm px-space-sm"><div class="w-9 h-9 rounded-xl bg-primary-container flex items-center justify-center shadow-[0_0_20px_rgba(99,102,241,0.3)]"><span class="material-symbols-outlined text-on-primary-container text-[20px]">bolt</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface">PULSE</span><span class="font-label-sm text-label-sm tracking-widest text-outline uppercase">STUDIO // COMMAND</span></div></div><div class="px-space-sm"><div class="p-space-xs rounded-xl bg-surface-container-low flex flex-col gap-1"><span class="font-label-sm text-label-sm text-outline px-space-xs uppercase tracking-wider">Role Scope</span><div class="flex items-center justify-between text-on-surface font-label-md text-label-md px-space-xs"><span class="flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span>Organizers &amp; Staff</span><span class="font-label-sm text-label-sm text-tertiary bg-tertiary-container/30 px-space-xs py-0.5 rounded">ACTIVE</span></div></div></div><nav class="flex flex-col gap-1" data-active-classes="bg-primary-container text-on-primary-container font-semibold rounded-xl shadow-[0_0_18px_rgba(128,131,255,0.25)]"><a aria-current="page" class="flex items-center gap-space-sm px-space-md py-space-sm transition-all bg-primary-container text-on-primary-container font-semibold rounded-xl shadow-[0_0_18px_rgba(128,131,255,0.25)]" data-path="event-creator" href="#"><span class="material-symbols-outlined text-[20px]">edit_calendar</span><span class="font-label-md text-label-md">Event Creator</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="ticket-telemetry" href="#"><span class="material-symbols-outlined text-[20px]">confirmation_number</span><span class="font-label-md text-label-md">Ticket Telemetry</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="door-scanner" href="#"><span class="material-symbols-outlined text-[20px]">qr_code_scanner</span><span class="font-label-md text-label-md">Door Scanner</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="campus-oversight" href="#"><span class="material-symbols-outlined text-[20px]">admin_panel_settings</span><span class="font-label-md text-label-md">Campus Oversight</span></a><a class="flex items-center gap-space-sm px-space-md py-space-sm rounded-xl text-on-surface-variant hover:bg-surface-container-high hover:text-on-surface transition-all" data-path="audit-compliance" href="#"><span class="material-symbols-outlined text-[20px]">verified_user</span><span class="font-label-md text-label-md">Audit &amp; Compliance</span></a></nav></div><div class="p-space-sm bg-surface-container-low rounded-xl flex items-center justify-between"><div class="flex items-center gap-space-sm"><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div><div class="flex flex-col"><span class="font-label-md text-label-md text-on-surface font-semibold">Console View</span><span class="font-label-sm text-label-sm text-outline">Instant Switch</span></div></div><span class="material-symbols-outlined text-outline text-[18px]">toggle_on</span></div></aside><div class="pl-72"><header class="fixed top-0 left-72 right-0 h-20 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)] z-40 flex items-center justify-between px-margin"><div class="flex items-center gap-space-md"><div class="px-space-md py-space-xs rounded-full bg-surface-container-low text-on-surface-variant font-label-sm text-label-sm uppercase flex items-center gap-2"><span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>Production Mode // Live Network</div></div><div class="flex items-center gap-space-md"><div class="relative group"><button class="px-space-md py-space-xs rounded-xl bg-surface-container-low hover:bg-surface-container text-on-surface font-label-sm text-label-sm flex items-center gap-2 shadow-[0_0_20px_rgba(128,131,255,0.25)] transition-all focus:outline-none" id="role-switcher-btn"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse"></span><span class="text-outline uppercase tracking-wider font-mono">Role:</span><span class="font-semibold text-primary">Organizer Studio</span><span class="material-symbols-outlined text-[18px] text-outline group-hover:text-primary transition-all">expand_more</span></button><div class="absolute right-0 top-full mt-2 w-72 rounded-xl bg-surface-container-lowest/90 backdrop-blur-2xl p-space-xs shadow-[0_0_24px_rgba(0,0,0,0.4)] hidden group-hover:flex flex-col gap-1 z-50"><div class="px-space-sm py-1 font-label-sm text-label-sm text-outline uppercase tracking-wider font-mono">Switch Operational Role</div><a href="#" data-path="live-feed" class="flex items-center justify-between p-space-sm rounded-lg hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-all"><div class="flex flex-col"><span class="font-label-md text-label-md font-semibold text-on-surface">Student Hub</span><span class="text-outline font-body-sm text-body-sm">Discovery &amp; RSVP</span></div><span class="material-symbols-outlined text-[18px] text-outline">explore</span></a><a href="#" data-path="event-creator" class="flex items-center justify-between p-space-sm rounded-lg bg-primary-container/20 text-primary border-0 transition-all"><div class="flex flex-col"><div class="flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span><span class="font-label-md text-label-md font-bold text-on-surface">Organizer Studio</span></div><span class="text-tertiary font-body-sm text-body-sm">Selected // Active Console</span></div><span class="material-symbols-outlined text-[18px] text-tertiary">check</span></a><a href="#" data-path="audit-compliance" class="flex items-center justify-between p-space-sm rounded-lg hover:bg-surface-container-high text-on-surface-variant hover:text-on-surface transition-all"><div class="flex flex-col"><span class="font-label-md text-label-md font-semibold text-on-surface">Admin Command</span><span class="text-outline font-body-sm text-body-sm">Governance &amp; Controls</span></div><span class="material-symbols-outlined text-[18px] text-outline">security</span></a></div></div><button aria-label="Notifications" class="w-10 h-10 rounded-xl bg-surface-container-low hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></header><main class="relative pt-20 bg-background"><div class="flex flex-col w-full">
+<div class="px-margin py-space-lg flex flex-col gap-space-xl">
+<!-- Top Action & Scope HUD -->
+<div class="flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-md">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-space-sm">
+<span class="px-space-xs py-0.5 rounded bg-tertiary-container/20 text-tertiary font-label-sm text-label-sm uppercase tracking-widest flex items-center gap-1.5">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-ping"></span>
+            CONSOLE OPERATIONAL // ORG-CLUSTER-04
+          </span>
+<span class="text-outline text-label-sm font-label-sm uppercase tracking-wider font-mono">ID: ORG_8820B</span>
+</div>
+<h1 class="font-headline-lg text-headline-lg font-bold tracking-tight text-on-surface">Organizer Studio</h1>
+<p class="text-on-surface-variant font-body-sm text-body-sm">Manage live guest rosters, check-in thresholds, dynamic capacity locks, and emergency student broadcasts.</p>
+</div>
+<!-- Quick Action Controls -->
+<div class="flex items-center gap-space-sm self-stretch lg:self-auto">
+<button class="px-space-md py-space-sm rounded-xl bg-surface-container-high hover:bg-surface-bright text-on-surface transition-all flex items-center gap-2 font-label-md text-label-md shadow-sm" id="btn-sync-api">
+<span class="material-symbols-outlined text-[18px]">sync</span>
+<span class="hidden sm:inline">Sync DB API</span>
+</button>
+<button class="px-space-md py-space-sm rounded-xl bg-primary-container text-on-primary-container font-label-md text-label-md font-semibold shadow-[0_0_24px_rgba(128,131,255,0.35)] hover:shadow-[0_0_32px_rgba(128,131,255,0.55)] transition-all flex items-center gap-2">
+<span class="material-symbols-outlined text-[18px]">add_circle</span>
+<span>New Pipeline Event</span>
+</button>
+</div>
+</div>
+<!-- Telemetry Metric Row -->
+<div class="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-gutter">
+<!-- Metric 1 -->
+<div class="p-space-lg rounded-xl bg-surface-container/70 backdrop-blur-xl flex flex-col justify-between shadow-md relative overflow-hidden group hover:bg-surface-container transition-all">
+<div class="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-primary/10 blur-xl group-hover:bg-primary/20 transition-all pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-mono">Active Managed Events</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-[18px]">dataset</span>
+</div>
+</div>
+<div class="mt-space-md flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg font-bold text-on-surface tracking-tight">03</span>
+<span class="text-tertiary font-label-sm text-label-sm flex items-center">+1 this week</span>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="text-outline">Scope: Student Union</span>
+<span class="font-mono text-label-sm">/api/events</span>
+</div>
+</div>
+<!-- Metric 2 -->
+<div class="p-space-lg rounded-xl bg-surface-container/70 backdrop-blur-xl flex flex-col justify-between shadow-md relative overflow-hidden group hover:bg-surface-container transition-all">
+<div class="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-secondary-container/10 blur-xl group-hover:bg-secondary-container/20 transition-all pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-mono">Total RSVPs Today</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-secondary">
+<span class="material-symbols-outlined text-[18px]">group_add</span>
+</div>
+</div>
+<div class="mt-space-md flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg font-bold text-on-surface tracking-tight" id="counter-rsvps">482</span>
+<span class="px-space-xs py-0.5 rounded bg-secondary-container/20 text-secondary font-label-sm text-label-sm font-semibold uppercase tracking-wider">Surge +41%</span>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="text-outline">Peak velocity</span>
+<span class="font-mono text-label-sm">9.4 scans/min</span>
+</div>
+</div>
+<!-- Metric 3 -->
+<div class="p-space-lg rounded-xl bg-surface-container/70 backdrop-blur-xl flex flex-col justify-between shadow-md relative overflow-hidden group hover:bg-surface-container transition-all">
+<div class="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-tertiary/10 blur-xl group-hover:bg-tertiary/20 transition-all pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-mono">Avg Capacity Fill</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-tertiary">
+<span class="material-symbols-outlined text-[18px]">pie_chart</span>
+</div>
+</div>
+<div class="mt-space-md flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg font-bold text-on-surface tracking-tight">88.4<span class="text-headline-md font-semibold text-tertiary">%</span></span>
+<span class="text-tertiary font-label-sm text-label-sm flex items-center">Nominal</span>
+</div>
+<div class="mt-space-sm flex flex-col gap-1">
+<div class="w-full h-1 bg-surface-container-highest rounded-full overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 88.4%;"></div>
+</div>
+<span class="text-outline font-body-sm text-body-sm text-right font-mono">1,120 / 1,267 slots</span>
+</div>
+</div>
+<!-- Metric 4 -->
+<div class="p-space-lg rounded-xl bg-surface-container/70 backdrop-blur-xl flex flex-col justify-between shadow-md relative overflow-hidden group hover:bg-surface-container transition-all">
+<div class="absolute -right-6 -top-6 w-24 h-24 rounded-full bg-primary-container/10 blur-xl group-hover:bg-primary-container/20 transition-all pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-mono">Check-in Readiness</span>
+<div class="w-8 h-8 rounded-lg bg-surface-container-high flex items-center justify-center text-primary-container">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</div>
+</div>
+<div class="mt-space-md flex items-baseline gap-2">
+<span class="font-display-lg text-display-lg font-bold text-on-surface tracking-tight">100<span class="text-headline-md font-semibold text-primary">%</span></span>
+<span class="px-space-xs py-0.5 rounded bg-primary-container/20 text-primary font-label-sm text-label-sm uppercase">QR Engine Active</span>
+</div>
+<div class="mt-space-sm flex items-center justify-between text-on-surface-variant font-body-sm text-body-sm">
+<span class="text-outline">Terminal latency</span>
+<span class="font-mono text-label-sm text-tertiary">38ms TLS 1.3</span>
+</div>
+</div>
+</div>
+<!-- Active Event Bar & Switcher -->
+<div class="p-space-md rounded-xl bg-surface-container-low shadow-sm flex flex-col lg:flex-row items-stretch lg:items-center justify-between gap-space-md">
+<div class="flex flex-col sm:flex-row items-start sm:items-center gap-space-md flex-1">
+<div class="flex items-center gap-space-sm">
+<span class="font-label-md text-label-md uppercase tracking-wider text-outline font-mono">Target Event:</span>
+</div>
+<!-- Interactive Select Dropdown -->
+<div class="relative w-full max-w-2xl">
+<select class="w-full appearance-none bg-surface-container-high text-on-surface font-headline-sm text-headline-sm px-space-md py-space-sm rounded-xl cursor-pointer focus:outline-none focus:bg-surface-bright transition-all pr-12" id="event-selector">
+<option selected="" value="ev_9a82b4">Synapse AI Hackathon 2025 (UUID: ev_9a82b4) — Capacity: 250 / 250 (Full)</option>
+<option value="ev_4c211f">Hyperion Sound Lab: Live Modular Synth (UUID: ev_4c211f) — Capacity: 180 / 300</option>
+<option value="ev_71b90a">Campus Quantum Computing Symposium (UUID: ev_71b90a) — Capacity: 95 / 100</option>
+</select>
+<div class="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-outline">
+<span class="material-symbols-outlined text-[22px]">unfold_more</span>
+</div>
+</div>
+</div>
+<!-- Event Status Micro-HUD -->
+<div class="flex items-center gap-space-md shrink-0 self-end lg:self-auto">
+<div class="flex items-center gap-2 px-space-md py-space-xs rounded-full bg-secondary-container/20 text-secondary">
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+<span class="font-label-sm text-label-sm uppercase tracking-wider font-semibold">Live Waitlist Enabled</span>
+</div>
+<div class="h-6 w-[1px] bg-surface-container-highest"></div>
+<div class="flex items-center gap-1 text-on-surface-variant font-mono font-label-sm text-label-sm">
+<span class="material-symbols-outlined text-[16px] text-tertiary">lock</span>
+<span>AUTH LOCK: ORG-SIGN-KEY-ED25519</span>
+</div>
+</div>
+</div>
+<!-- Main Workspace Split: Roster (Left 8-col) + Command Rail (Right 4-col) -->
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-gutter items-start">
+<!-- Left Content: Live Attendee Roster Table (8 cols) -->
+<div class="lg:col-span-8 flex flex-col gap-space-md">
+<!-- Table Toolbar -->
+<div class="p-space-md rounded-xl bg-surface-container flex flex-col sm:flex-row items-stretch sm:items-center justify-between gap-space-sm shadow-sm">
+<div class="relative flex-1">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-outline text-[20px]">search</span>
+<input class="w-full bg-surface-container-low pl-10 pr-4 py-space-sm rounded-lg text-body-sm font-body-sm text-on-surface placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest transition-all" id="attendee-search" placeholder="Search by student email, registration UUID, or campus role..." type="text">
+</div>
+<div class="flex items-center gap-space-xs shrink-0">
+<div class="flex items-center bg-surface-container-low rounded-lg p-1">
+<button class="px-space-sm py-1 rounded bg-primary-container text-on-primary-container font-label-sm text-label-sm uppercase font-semibold">All (250)</button>
+<button class="px-space-sm py-1 rounded text-outline hover:text-on-surface font-label-sm text-label-sm uppercase font-semibold transition-colors">Checked In (178)</button>
+<button class="px-space-sm py-1 rounded text-outline hover:text-on-surface font-label-sm text-label-sm uppercase font-semibold transition-colors">Waitlist (14)</button>
+</div>
+<button class="px-space-md py-space-sm rounded-lg bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md flex items-center gap-2 transition-all shadow-sm" id="btn-export-csv">
+<span class="material-symbols-outlined text-[18px]">file_download</span>
+<span>Export CSV</span>
+</button>
+</div>
+</div>
+<!-- Glassmorphism Roster Table -->
+<div class="rounded-xl bg-surface-container/90 backdrop-blur-2xl shadow-xl overflow-hidden">
+<div class="px-space-lg py-space-sm bg-surface-container-high/60 flex items-center justify-between">
+<div class="flex items-center gap-2">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline font-mono">DATABASE VIEW</span>
+<span class="text-outline">•</span>
+<span class="font-mono text-label-sm text-tertiary">/api/events/ev_9a82b4/registrations</span>
+</div>
+<span class="font-label-sm text-label-sm text-outline font-mono" id="records-counter">Showing 6 of 250 records</span>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left font-body-sm text-body-sm">
+<thead class="bg-surface-container-highest/40 text-outline font-label-sm text-label-sm uppercase tracking-wider">
+<tr>
+<th class="px-space-md py-space-sm">Attendee &amp; Role</th>
+<th class="px-space-md py-space-sm font-mono">Registration ID</th>
+<th class="px-space-md py-space-sm">Timestamp</th>
+<th class="px-space-md py-space-sm">Status</th>
+<th class="px-space-md py-space-sm text-right">Quick Actions</th>
+</tr>
+</thead>
+<tbody class="divide-y-0 text-on-surface" id="roster-tbody">
+<!-- Row 1 -->
+<tr class="bg-surface-container-low/50 hover:bg-surface-bright/40 transition-colors group">
+<td class="px-space-md py-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-label-md text-label-md font-bold uppercase">AV</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">alex.v@campus.edu</span>
+<span class="text-outline font-body-sm text-body-sm">Undergraduate Senior // EECS</span>
+</div>
+</div>
+</td>
+<td class="px-space-md py-space-md font-mono text-label-sm text-on-surface-variant">
+                    reg_09a1f9e
+                  </td>
+<td class="px-space-md py-space-md text-outline font-mono text-label-sm">
+                    Today, 14:22:04
+                  </td>
+<td class="px-space-md py-space-md">
+<span class="px-space-xs py-0.5 rounded-full bg-tertiary-container/30 text-tertiary font-label-sm text-label-sm uppercase flex items-center gap-1.5 w-fit">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+                      Checked In
+                    </span>
+</td>
+<td class="px-space-md py-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded bg-surface-container-high hover:bg-surface-bright text-tertiary transition-all" title="Verified Pass Active">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</button>
+<button class="p-1 rounded bg-surface-container-high hover:bg-surface-bright text-outline hover:text-on-surface transition-all" title="Resend QR Pass">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+<button class="p-1 rounded bg-surface-container-high hover:bg-error-container text-outline hover:text-error transition-all" title="Revoke RSVP">
+<span class="material-symbols-outlined text-[18px]">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 2 -->
+<tr class="bg-surface-container/30 hover:bg-surface-bright/40 transition-colors group">
+<td class="px-space-md py-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-secondary-container/20 text-secondary flex items-center justify-center font-label-md text-label-md font-bold uppercase">PK</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">priya.k@campus.edu</span>
+<span class="text-outline font-body-sm text-body-sm">Postgrad Fellow // Robotics</span>
+</div>
+</div>
+</td>
+<td class="px-space-md py-space-md font-mono text-label-sm text-on-surface-variant">
+                    reg_7bc89d1
+                  </td>
+<td class="px-space-md py-space-md text-outline font-mono text-label-sm">
+                    Today, 14:19:50
+                  </td>
+<td class="px-space-md py-space-md">
+<span class="px-space-xs py-0.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm uppercase flex items-center gap-1.5 w-fit">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                      Confirmed
+                    </span>
+</td>
+<td class="px-space-md py-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="px-space-sm py-1 rounded bg-primary text-on-primary font-label-sm text-label-sm font-semibold hover:opacity-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check</span>
+<span>Check-in</span>
+</button>
+<button class="p-1 rounded bg-surface-container-high hover:bg-surface-bright text-outline hover:text-on-surface transition-all" title="Resend QR Pass">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+<button class="p-1 rounded bg-surface-container-high hover:bg-error-container text-outline hover:text-error transition-all" title="Revoke RSVP">
+<span class="material-symbols-outlined text-[18px]">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 3 -->
+<tr class="bg-surface-container-low/50 hover:bg-surface-bright/40 transition-colors group">
+<td class="px-space-md py-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-tertiary-container/30 text-tertiary flex items-center justify-center font-label-md text-label-md font-bold uppercase">MC</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">marcus.c@campus.edu</span>
+<span class="text-outline font-body-sm text-body-sm">Student // Informatics</span>
+</div>
+</div>
+</td>
+<td class="px-space-md py-space-md font-mono text-label-sm text-on-surface-variant">
+                    reg_33e098a
+                  </td>
+<td class="px-space-md py-space-md text-outline font-mono text-label-sm">
+                    Today, 13:58:12
+                  </td>
+<td class="px-space-md py-space-md">
+<span class="px-space-xs py-0.5 rounded-full bg-tertiary-container/30 text-tertiary font-label-sm text-label-sm uppercase flex items-center gap-1.5 w-fit">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+                      Checked In
+                    </span>
+</td>
+<td class="px-space-md py-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded bg-surface-container-high hover:bg-surface-bright text-tertiary transition-all" title="Verified Pass Active">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</button>
+<button class="p-1 rounded bg-surface-container-high hover:bg-surface-bright text-outline hover:text-on-surface transition-all" title="Resend QR Pass">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+<button class="p-1 rounded bg-surface-container-high hover:bg-error-container text-outline hover:text-error transition-all" title="Revoke RSVP">
+<span class="material-symbols-outlined text-[18px]">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 4 -->
+<tr class="bg-surface-container/30 hover:bg-surface-bright/40 transition-colors group">
+<td class="px-space-md py-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-surface-bright text-outline flex items-center justify-center font-label-md text-label-md font-bold uppercase">JL</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">j.liang@campus.edu</span>
+<span class="text-outline font-body-sm text-body-sm">Undergraduate // Design Studio</span>
+</div>
+</div>
+</td>
+<td class="px-space-md py-space-md font-mono text-label-sm text-on-surface-variant">
+                    reg_ff20881
+                  </td>
+<td class="px-space-md py-space-md text-outline font-mono text-label-sm">
+                    Today, 13:41:00
+                  </td>
+<td class="px-space-md py-space-md">
+<span class="px-space-xs py-0.5 rounded-full bg-secondary-container/20 text-secondary font-label-sm text-label-sm uppercase flex items-center gap-1.5 w-fit">
+<span class="w-1.5 h-1.5 rounded-full bg-secondary-container"></span>
+                      Waitlist #02
+                    </span>
+</td>
+<td class="px-space-md py-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="px-space-sm py-1 rounded bg-secondary-container text-on-secondary-container font-label-sm text-label-sm font-semibold hover:opacity-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">arrow_upward</span>
+<span>Promote</span>
+</button>
+<button class="p-1 rounded bg-surface-container-high hover:bg-surface-bright text-outline hover:text-on-surface transition-all" title="Resend QR Pass">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+<button class="p-1 rounded bg-surface-container-high hover:bg-error-container text-outline hover:text-error transition-all" title="Revoke RSVP">
+<span class="material-symbols-outlined text-[18px]">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 5 -->
+<tr class="bg-surface-container-low/50 hover:bg-surface-bright/40 transition-colors group">
+<td class="px-space-md py-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-primary/20 text-primary flex items-center justify-center font-label-md text-label-md font-bold uppercase">DA</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">d.alvarez@campus.edu</span>
+<span class="text-outline font-body-sm text-body-sm">Student // Bio-Engineering</span>
+</div>
+</div>
+</td>
+<td class="px-space-md py-space-md font-mono text-label-sm text-on-surface-variant">
+                    reg_2e990c4
+                  </td>
+<td class="px-space-md py-space-md text-outline font-mono text-label-sm">
+                    Today, 12:15:33
+                  </td>
+<td class="px-space-md py-space-md">
+<span class="px-space-xs py-0.5 rounded-full bg-primary-container/20 text-primary font-label-sm text-label-sm uppercase flex items-center gap-1.5 w-fit">
+<span class="w-1.5 h-1.5 rounded-full bg-primary"></span>
+                      Confirmed
+                    </span>
+</td>
+<td class="px-space-md py-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="px-space-sm py-1 rounded bg-primary text-on-primary font-label-sm text-label-sm font-semibold hover:opacity-95 transition-all flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px]">check</span>
+<span>Check-in</span>
+</button>
+<button class="p-1 rounded bg-surface-container-high hover:bg-surface-bright text-outline hover:text-on-surface transition-all" title="Resend QR Pass">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+<button class="p-1 rounded bg-surface-container-high hover:bg-error-container text-outline hover:text-error transition-all" title="Revoke RSVP">
+<span class="material-symbols-outlined text-[18px]">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+<!-- Row 6 -->
+<tr class="bg-surface-container/30 hover:bg-surface-bright/40 transition-colors group">
+<td class="px-space-md py-space-md">
+<div class="flex items-center gap-space-sm">
+<div class="w-8 h-8 rounded-full bg-tertiary-container/30 text-tertiary flex items-center justify-center font-label-md text-label-md font-bold uppercase">RN</div>
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-semibold">remi.nord@campus.edu</span>
+<span class="text-outline font-body-sm text-body-sm">Student // Applied Math</span>
+</div>
+</div>
+</td>
+<td class="px-space-md py-space-md font-mono text-label-sm text-on-surface-variant">
+                    reg_44bc110
+                  </td>
+<td class="px-space-md py-space-md text-outline font-mono text-label-sm">
+                    Today, 11:40:19
+                  </td>
+<td class="px-space-md py-space-md">
+<span class="px-space-xs py-0.5 rounded-full bg-tertiary-container/30 text-tertiary font-label-sm text-label-sm uppercase flex items-center gap-1.5 w-fit">
+<span class="w-1.5 h-1.5 rounded-full bg-tertiary animate-pulse"></span>
+                      Checked In
+                    </span>
+</td>
+<td class="px-space-md py-space-md text-right">
+<div class="flex items-center justify-end gap-1">
+<button class="p-1 rounded bg-surface-container-high hover:bg-surface-bright text-tertiary transition-all" title="Verified Pass Active">
+<span class="material-symbols-outlined text-[18px]">verified</span>
+</button>
+<button class="p-1 rounded bg-surface-container-high hover:bg-surface-bright text-outline hover:text-on-surface transition-all" title="Resend QR Pass">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</button>
+<button class="p-1 rounded bg-surface-container-high hover:bg-error-container text-outline hover:text-error transition-all" title="Revoke RSVP">
+<span class="material-symbols-outlined text-[18px]">person_remove</span>
+</button>
+</div>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+<!-- Table Footer Pagination & Telemetry -->
+<div class="p-space-md bg-surface-container-high/40 flex flex-col sm:flex-row items-center justify-between gap-space-sm">
+<span class="text-outline font-body-sm text-body-sm font-mono">Page 1 of 42 (Streaming SSE socket active)</span>
+<div class="flex items-center gap-2">
+<button class="px-space-sm py-1 rounded bg-surface-container-high text-outline hover:text-on-surface font-label-sm text-label-sm uppercase transition-colors" disabled="">Previous</button>
+<button class="px-space-sm py-1 rounded bg-primary-container text-on-primary-container font-label-sm text-label-sm font-bold">1</button>
+<button class="px-space-sm py-1 rounded bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm">2</button>
+<button class="px-space-sm py-1 rounded bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm">3</button>
+<button class="px-space-sm py-1 rounded bg-surface-container-high text-on-surface-variant hover:text-on-surface font-label-sm text-label-sm uppercase transition-colors">Next</button>
+</div>
+</div>
+</div>
+<!-- Real-Time RSVP Check-in Graph / Flow Visualization -->
+<div class="p-space-lg rounded-xl bg-surface-container/60 backdrop-blur-xl flex flex-col gap-space-md shadow-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Arrival Flow Velocity</span>
+<span class="text-outline font-body-sm text-body-sm">Aggregated check-in rates recorded by door sensors over the last 60 minutes</span>
+</div>
+<div class="flex items-center gap-space-sm text-outline font-mono font-label-sm text-label-sm">
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-primary-container"></span> Gate Alpha</span>
+<span class="flex items-center gap-1"><span class="w-2 h-2 rounded-full bg-tertiary"></span> Gate Beta</span>
+</div>
+</div>
+<!-- Inline SVG Flow Chart -->
+<div class="w-full h-36 relative">
+<svg class="w-full h-full text-primary-container overflow-visible" preserveAspectRatio="none" viewBox="0 0 800 120">
+<defs>
+<linearGradient id="primaryGlow" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#8083ff" stop-opacity="0.35"></stop>
+<stop offset="100%" stop-color="#8083ff" stop-opacity="0.0"></stop>
+</linearGradient>
+<linearGradient id="tertiaryGlow" x1="0%" x2="0%" y1="0%" y2="100%">
+<stop offset="0%" stop-color="#4edea3" stop-opacity="0.25"></stop>
+<stop offset="100%" stop-color="#4edea3" stop-opacity="0.0"></stop>
+</linearGradient>
+</defs>
+<!-- Gate Alpha Area & Line -->
+<path d="M 0,110 Q 120,95 240,60 T 480,25 T 650,45 T 800,10 L 800,120 L 0,120 Z" fill="url(#primaryGlow)"></path>
+<path d="M 0,110 Q 120,95 240,60 T 480,25 T 650,45 T 800,10" fill="none" stroke="#8083ff" stroke-width="2.5"></path>
+<!-- Gate Beta Area & Line -->
+<path d="M 0,115 Q 160,110 320,80 T 540,55 T 700,30 T 800,20 L 800,120 L 0,120 Z" fill="url(#tertiaryGlow)"></path>
+<path d="M 0,115 Q 160,110 320,80 T 540,55 T 700,30 T 800,20" fill="none" stroke="#4edea3" stroke-dasharray="4 3" stroke-width="2"></path>
+</svg>
+<div class="absolute inset-x-0 bottom-0 flex justify-between text-outline font-mono font-label-sm text-label-sm pt-2">
+<span>-60 min</span>
+<span>-45 min</span>
+<span>-30 min</span>
+<span>-15 min</span>
+<span class="text-tertiary">Just now</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Right Command Rail: Settings, Broadcast, Scanner (4 cols) -->
+<div class="lg:col-span-4 flex flex-col gap-space-lg">
+<!-- Door Scanner Simulator Action Card -->
+<div class="p-space-lg rounded-xl bg-surface-container-high/80 backdrop-blur-2xl shadow-xl flex flex-col gap-space-md relative overflow-hidden">
+<div class="absolute -right-12 -bottom-12 w-36 h-36 rounded-full bg-tertiary/10 blur-2xl pointer-events-none"></div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-space-sm">
+<span class="w-2.5 h-2.5 rounded-full bg-tertiary animate-ping"></span>
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Door Scanner</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-lowest text-tertiary font-mono font-label-sm text-label-sm">LIVE FEED</span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">Simulate hardware optical camera feeds or student credential pass check-in scans.</p>
+<!-- Terminal Screen simulator -->
+<div class="p-space-md rounded-xl bg-surface-container-lowest flex flex-col gap-2 relative group cursor-pointer" id="scanner-sim-box">
+<div class="flex items-center justify-between font-mono font-label-sm text-label-sm text-outline">
+<span>TARGET CAM: 01-NORTH-MAIN</span>
+<span class="text-tertiary">60 FPS</span>
+</div>
+<div class="h-32 rounded-lg bg-surface-container-low flex flex-col items-center justify-center relative overflow-hidden border-0">
+<span class="material-symbols-outlined text-[48px] text-outline group-hover:text-primary transition-all">qr_code_scanner</span>
+<div class="absolute inset-x-4 top-1/2 h-[2px] bg-tertiary shadow-[0_0_12px_#4edea3] animate-pulse"></div>
+<span class="font-label-sm text-label-sm font-mono text-outline mt-2">CLICK TO SIMULATE PASS SCAN</span>
+</div>
+<div class="p-2 rounded bg-surface-container-high flex items-center justify-between text-on-surface font-label-sm text-label-sm font-mono" id="scanner-status">
+<span class="flex items-center gap-2">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span>
+<span>Standby: Ready for badges</span>
+</span>
+<span class="text-outline">HOLD PASS</span>
+</div>
+</div>
+<button class="w-full py-space-sm rounded-xl bg-primary hover:bg-primary-fixed text-on-primary font-label-md text-label-md font-bold tracking-wide transition-all shadow-[0_0_20px_rgba(192,193,255,0.3)] flex items-center justify-center gap-2" id="trigger-scan-btn">
+<span class="material-symbols-outlined text-[18px]">document_scanner</span>
+<span>Simulate Check-in Pass</span>
+</button>
+</div>
+<!-- Event Settings & Capacity Guard Slider -->
+<div class="p-space-lg rounded-xl bg-surface-container/70 backdrop-blur-xl shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Capacity Guard</span>
+<span class="font-body-sm text-body-sm text-outline">Dynamic hard-cap venue governor</span>
+</div>
+<span class="material-symbols-outlined text-secondary text-[24px]">tune</span>
+</div>
+<div class="p-space-md rounded-xl bg-surface-container-low flex flex-col gap-space-sm">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-wider text-outline">Allocated Capacity</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface font-mono" id="capacity-display">250 <span class="text-body-sm text-outline font-normal">MAX</span></span>
+</div>
+<!-- Custom Slider Track -->
+<input class="w-full accent-primary-container bg-surface-container-highest h-2 rounded-lg cursor-pointer" id="capacity-slider" max="500" min="100" step="10" type="range" value="250">
+<div class="flex items-center justify-between text-outline font-mono font-label-sm text-label-sm">
+<span>Min: 100</span>
+<span class="text-secondary font-semibold">Current RSVPs: 250</span>
+<span>Max: 500</span>
+</div>
+</div>
+<!-- Safeguard Toggles -->
+<div class="flex flex-col gap-space-sm">
+<label class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low cursor-pointer hover:bg-surface-bright/50 transition-colors">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Automatic Waitlist Conversion</span>
+<span class="text-outline font-body-sm text-body-sm">Auto-promote queue upon RSVP revocations</span>
+</div>
+<input checked="" class="w-4 h-4 accent-primary rounded cursor-pointer" type="checkbox">
+</label>
+<label class="flex items-center justify-between p-space-sm rounded-lg bg-surface-container-low cursor-pointer hover:bg-surface-bright/50 transition-colors">
+<div class="flex flex-col">
+<span class="font-label-md text-label-md text-on-surface font-medium">Overcapacity Lockout</span>
+<span class="text-outline font-body-sm text-body-sm">Reject door check-ins beyond 100% cap</span>
+</div>
+<input checked="" class="w-4 h-4 accent-secondary-container rounded cursor-pointer" type="checkbox">
+</label>
+</div>
+<button class="w-full py-space-sm rounded-xl bg-surface-container-high hover:bg-surface-bright text-on-surface font-label-md text-label-md font-semibold transition-all" id="save-settings-btn">
+            Save Threshold Limits
+          </button>
+</div>
+<!-- Quick Broadcast Student Blast Card -->
+<div class="p-space-lg rounded-xl bg-surface-container/70 backdrop-blur-xl shadow-md flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm font-semibold text-on-surface">Quick Broadcast</span>
+<span class="font-body-sm text-body-sm text-outline">Push notifications + email blast</span>
+</div>
+<div class="w-8 h-8 rounded-lg bg-secondary-container/20 text-secondary flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">campaign</span>
+</div>
+</div>
+<div class="flex items-center gap-space-xs">
+<span class="font-label-sm text-label-sm text-outline uppercase font-mono">Audience:</span>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-high text-on-surface font-label-sm text-label-sm font-semibold">250 Registered Students</span>
+</div>
+<div class="flex flex-col gap-2">
+<textarea class="w-full p-space-sm rounded-xl bg-surface-container-low text-on-surface font-body-sm text-body-sm placeholder:text-outline focus:outline-none focus:bg-surface-container-lowest resize-none" id="broadcast-msg" placeholder="e.g. Doors open in 15 minutes! Hackathon floor is located at Level 3 Innovation Commons. Have your pass ready." rows="3"></textarea>
+<div class="flex items-center justify-between text-outline font-mono font-label-sm text-label-sm">
+<span id="char-count">0 / 280 chars</span>
+<span class="text-tertiary">Priority: High Delivery</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex-1 py-space-sm rounded-xl bg-secondary-container text-on-secondary-container font-label-md text-label-md font-bold tracking-wide transition-all shadow-[0_0_20px_rgba(236,106,6,0.3)] hover:opacity-95 flex items-center justify-center gap-2" id="btn-send-broadcast">
+<span class="material-symbols-outlined text-[18px]">cell_tower</span>
+<span>Send Blast (250)</span>
+</button>
+<button class="p-space-sm rounded-xl bg-surface-container-high text-outline hover:text-on-surface transition-colors" title="Schedule Broadcast">
+<span class="material-symbols-outlined text-[20px]">schedule</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Active Events Quick-Selector Ribbon (Owned Events /api/events/{id}) -->
+<div class="pt-space-lg flex flex-col gap-space-md">
+<div class="flex items-center justify-between">
+<div class="flex flex-col">
+<span class="font-headline-sm text-headline-sm text-on-surface font-semibold">Pipeline Events by Organizer</span>
+<span class="font-body-sm text-body-sm text-outline">Manage assigned sub-venues and sync live event telemetry</span>
+</div>
+<a class="font-label-md text-label-md text-primary hover:underline flex items-center gap-1" href="#">
+<span>View All 3 Events</span>
+<span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+</a>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
+<!-- Mini Card 1 (Active Hackathon) -->
+<div class="p-space-md rounded-xl bg-surface-container-high/90 shadow-md relative overflow-hidden group hover:bg-surface-bright transition-all cursor-pointer">
+<div class="flex items-start justify-between">
+<span class="px-space-xs py-0.5 rounded bg-tertiary-container/30 text-tertiary font-label-sm text-label-sm uppercase font-mono font-semibold">ACTIVE CONSOLE</span>
+<span class="font-mono font-label-sm text-label-sm text-outline">ev_9a82b4</span>
+</div>
+<h2 class="mt-space-sm font-headline-sm text-headline-sm font-bold text-on-surface">Synapse AI Hackathon 2025</h2>
+<p class="text-outline font-body-sm text-body-sm mt-1">Science Hub Auditorium • Today</p>
+<div class="mt-space-md flex items-center justify-between">
+<span class="text-secondary font-label-sm text-label-sm font-semibold">250 / 250 (100% Cap)</span>
+<span class="text-primary font-label-md text-label-md flex items-center gap-1 font-semibold">Inspect <span class="material-symbols-outlined text-[14px]">open_in_new</span></span>
+</div>
+</div>
+<!-- Mini Card 2 -->
+<div class="p-space-md rounded-xl bg-surface-container/60 shadow-md relative overflow-hidden group hover:bg-surface-container transition-all cursor-pointer">
+<div class="flex items-start justify-between">
+<span class="px-space-xs py-0.5 rounded bg-primary-container/20 text-primary font-label-sm text-label-sm uppercase font-mono font-semibold">SCHEDULED</span>
+<span class="font-mono font-label-sm text-label-sm text-outline">ev_4c211f</span>
+</div>
+<h2 class="mt-space-sm font-headline-sm text-headline-sm font-bold text-on-surface">Hyperion Sound Lab</h2>
+<p class="text-outline font-body-sm text-body-sm mt-1">Arts Annex Blackbox • Tomorrow 20:00</p>
+<div class="mt-space-md flex items-center justify-between">
+<span class="text-outline font-label-sm text-label-sm">180 / 300 RSVPs (60%)</span>
+<span class="text-outline group-hover:text-on-surface font-label-md text-label-md flex items-center gap-1 transition-colors">Switch <span class="material-symbols-outlined text-[14px]">swap_horiz</span></span>
+</div>
+</div>
+<!-- Mini Card 3 -->
+<div class="p-space-md rounded-xl bg-surface-container/60 shadow-md relative overflow-hidden group hover:bg-surface-container transition-all cursor-pointer">
+<div class="flex items-start justify-between">
+<span class="px-space-xs py-0.5 rounded bg-surface-variant text-outline font-label-sm text-label-sm uppercase font-mono font-semibold">REVIEW PENDING</span>
+<span class="font-mono font-label-sm text-label-sm text-outline">ev_71b90a</span>
+</div>
+<h2 class="mt-space-sm font-headline-sm text-headline-sm font-bold text-on-surface">Quantum Computing Gala</h2>
+<p class="text-outline font-body-sm text-body-sm mt-1">Faculty Pavilion • Oct 28</p>
+<div class="mt-space-md flex items-center justify-between">
+<span class="text-outline font-label-sm text-label-sm">95 / 100 RSVPs (95%)</span>
+<span class="text-outline group-hover:text-on-surface font-label-md text-label-md flex items-center gap-1 transition-colors">Switch <span class="material-symbols-outlined text-[14px]">swap_horiz</span></span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  (function() {
+    // Interactive search filter for table
+    const searchInput = document.getElementById('attendee-search');
+    const tableBody = document.getElementById('roster-tbody');
+    const recordsCounter = document.getElementById('records-counter');
+    
+    if (searchInput && tableBody) {
+      searchInput.addEventListener('input', function(e) {
+        const query = e.target.value.toLowerCase();
+        const rows = tableBody.querySelectorAll('tr');
+        let visibleCount = 0;
+
+        rows.forEach(row => {
+          const text = row.innerText.toLowerCase();
+          if (text.includes(query)) {
+            row.style.display = '';
+            visibleCount++;
+          } else {
+            row.style.display = 'none';
+          }
+        });
+
+        if (recordsCounter) {
+          recordsCounter.textContent = `Showing ${visibleCount} of 250 records`;
+        }
+      });
+    }
+
+    // Capacity slider feedback
+    const capacitySlider = document.getElementById('capacity-slider');
+    const capacityDisplay = document.getElementById('capacity-display');
+    const saveBtn = document.getElementById('save-settings-btn');
+
+    if (capacitySlider && capacityDisplay) {
+      capacitySlider.addEventListener('input', function() {
+        capacityDisplay.innerHTML = `${this.value} <span class="text-body-sm text-outline font-normal">MAX</span>`;
+      });
+    }
+
+    if (saveBtn) {
+      saveBtn.addEventListener('click', function() {
+        const originalText = saveBtn.innerText;
+        saveBtn.innerText = 'Locking Capacity...';
+        saveBtn.classList.add('bg-tertiary-container', 'text-on-tertiary-container');
+        setTimeout(() => {
+          saveBtn.innerText = 'Capacity Guard Updated ✓';
+          setTimeout(() => {
+            saveBtn.innerText = originalText;
+            saveBtn.classList.remove('bg-tertiary-container', 'text-on-tertiary-container');
+          }, 1800);
+        }, 500);
+      });
+    }
+
+    // Broadcast textarea counter and send feedback
+    const broadcastText = document.getElementById('broadcast-msg');
+    const charCount = document.getElementById('char-count');
+    const sendBlastBtn = document.getElementById('btn-send-broadcast');
+
+    if (broadcastText && charCount) {
+      broadcastText.addEventListener('input', function() {
+        charCount.textContent = `${this.value.length} / 280 chars`;
+      });
+    }
+
+    if (sendBlastBtn && broadcastText) {
+      sendBlastBtn.addEventListener('click', function() {
+        if (!broadcastText.value.trim()) {
+          broadcastText.focus();
+          broadcastText.classList.add('ring-1', 'ring-secondary');
+          setTimeout(() => broadcastText.classList.remove('ring-1', 'ring-secondary'), 1000);
+          return;
+        }
+        const originalHtml = sendBlastBtn.innerHTML;
+        sendBlastBtn.innerHTML = `<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span><span>Transmitting...</span>`;
+        setTimeout(() => {
+          sendBlastBtn.innerHTML = `<span class="material-symbols-outlined text-[18px]">done_all</span><span>Dispatched to 250!</span>`;
+          broadcastText.value = '';
+          if (charCount) charCount.textContent = '0 / 280 chars';
+          setTimeout(() => {
+            sendBlastBtn.innerHTML = originalHtml;
+          }, 2500);
+        }, 800);
+      });
+    }
+
+    // Door Scanner Simulator Button
+    const triggerScanBtn = document.getElementById('trigger-scan-btn');
+    const scannerBox = document.getElementById('scanner-sim-box');
+    const scannerStatus = document.getElementById('scanner-status');
+    const rsvpCounter = document.getElementById('counter-rsvps');
+
+    const sampleGuests = [
+      { email: 'k.patel@campus.edu', id: 'reg_66c891a' },
+      { email: 'sam.t@campus.edu', id: 'reg_1109ffc' },
+      { email: 'clara.m@campus.edu', id: 'reg_8820a4b' }
+    ];
+
+    function runSimulation() {
+      if (!scannerStatus) return;
+      const guest = sampleGuests[Math.floor(Math.random() * sampleGuests.length)];
+      scannerStatus.className = 'p-2 rounded bg-primary-container text-on-primary-container flex items-center justify-between font-label-sm text-label-sm font-mono transition-all';
+      scannerStatus.innerHTML = `
+        <span class="flex items-center gap-2">
+          <span class="material-symbols-outlined text-[16px] animate-spin">sync</span>
+          <span>Decoding QR: ${guest.id}</span>
+        </span>
+        <span>VERIFYING</span>
+      `;
+
+      setTimeout(() => {
+        scannerStatus.className = 'p-2 rounded bg-tertiary text-on-tertiary flex items-center justify-between font-label-sm text-label-sm font-mono shadow-[0_0_16px_rgba(78,222,163,0.5)] transition-all';
+        scannerStatus.innerHTML = `
+          <span class="flex items-center gap-2">
+            <span class="material-symbols-outlined text-[16px]">verified</span>
+            <span>PASS VALID: ${guest.email}</span>
+          </span>
+          <span class="font-bold">GRANTED</span>
+        `;
+
+        if (rsvpCounter) {
+          const cur = parseInt(rsvpCounter.innerText, 10);
+          rsvpCounter.innerText = (cur + 1).toString();
+        }
+
+        setTimeout(() => {
+          scannerStatus.className = 'p-2 rounded bg-surface-container-high text-on-surface flex items-center justify-between font-label-sm text-label-sm font-mono transition-all';
+          scannerStatus.innerHTML = `
+            <span class="flex items-center gap-2">
+              <span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span>
+              <span>Standby: Ready for badges</span>
+            </span>
+            <span class="text-outline">HOLD PASS</span>
+          `;
+        }, 3000);
+      }, 700);
+    }
+
+    if (triggerScanBtn) triggerScanBtn.addEventListener('click', runSimulation);
+    if (scannerBox) scannerBox.addEventListener('click', runSimulation);
+
+    // CSV Export simulation
+    const exportBtn = document.getElementById('btn-export-csv');
+    if (exportBtn) {
+      exportBtn.addEventListener('click', function() {
+        exportBtn.innerHTML = `<span class="material-symbols-outlined text-[18px] animate-spin">refresh</span><span>Exporting...</span>`;
+        setTimeout(() => {
+          exportBtn.innerHTML = `<span class="material-symbols-outlined text-[18px] text-tertiary">check</span><span>Downloaded CSV</span>`;
+          setTimeout(() => {
+            exportBtn.innerHTML = `<span class="material-symbols-outlined text-[18px]">file_download</span><span>Export CSV</span>`;
+          }, 2000);
+        }, 900);
+      });
+    }
+
+    // Sync DB API simulation
+    const syncBtn = document.getElementById('btn-sync-api');
+    if (syncBtn) {
+      syncBtn.addEventListener('click', function() {
+        syncBtn.innerHTML = `<span class="material-symbols-outlined text-[18px] animate-spin">sync</span><span>Syncing...</span>`;
+        setTimeout(() => {
+          syncBtn.innerHTML = `<span class="material-symbols-outlined text-[18px] text-tertiary">done</span><span>Database Fresh</span>`;
+          setTimeout(() => {
+            syncBtn.innerHTML = `<span class="material-symbols-outlined text-[18px]">sync</span><span class="hidden sm:inline">Sync DB API</span>`;
+          }, 2000);
+        }, 800);
+      });
+    }
+  })();
+</script></main></div>
+
+</body></html>

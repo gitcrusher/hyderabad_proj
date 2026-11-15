@@ -1,0 +1,656 @@
+<!DOCTYPE html><html class="dark" lang="en"><head><meta charset="utf-8"><meta content="width=device-width, initial-scale=1.0" name="viewport"><meta content="web_standard" name="shell-type"><link href="https://fonts.googleapis.com" rel="preconnect"><link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"><link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet"><link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"><style>@layer base{html,body{margin:0;padding:0;}body{overscroll-behavior:none;}main>:first-child{margin-top:0!important;}main>:last-child{margin-bottom:0!important;}}::-webkit-scrollbar{display:none;}</style><script src="https://cdn.tailwindcss.com"></script><script id="tailwind-config">tailwind.config={"darkMode":"class","theme":{"extend":{"colors":{"secondary-container":"#ec6a06","surface-container-lowest":"#0a0e18","on-primary-fixed":"#07006c","on-error":"#690005","on-secondary":"#552100","on-secondary-container":"#4a1c00","outline-variant":"#464554","tertiary-fixed-dim":"#4edea3","error-container":"#93000a","secondary-fixed":"#ffdbca","inverse-surface":"#dfe2f1","surface-variant":"#313540","primary-fixed":"#e1e0ff","on-primary-fixed-variant":"#2f2ebe","on-tertiary-container":"#000703","primary-fixed-dim":"#c0c1ff","tertiary":"#4edea3","tertiary-fixed":"#6ffbbe","on-surface-variant":"#c7c4d7","inverse-primary":"#494bd6","on-tertiary-fixed":"#002113","on-error-container":"#ffdad6","surface-container-high":"#262a35","surface-container-highest":"#313540","on-tertiary":"#003824","secondary":"#ffb690","on-tertiary-fixed-variant":"#005236","on-secondary-fixed-variant":"#783200","surface":"#0f131d","surface-container":"#1c1f2a","primary":"#c0c1ff","inverse-on-surface":"#2c303b","on-surface":"#dfe2f1","surface-tint":"#c0c1ff","surface-container-low":"#171b26","on-secondary-fixed":"#341100","outline":"#908fa0","on-background":"#dfe2f1","on-primary":"#1000a9","surface-bright":"#353944","secondary-fixed-dim":"#ffb690","error":"#ffb4ab","primary-container":"#8083ff","surface-dim":"#0f131d","tertiary-container":"#00885d","on-primary-container":"#0d0096","background":"#0f131d"},"borderRadius":{"DEFAULT":"0.25rem","lg":"0.5rem","xl":"0.75rem","full":"9999px"},"spacing":{"space-md":"1rem","margin":"3rem","space-xs":"0.25rem","gutter-sm":"1rem","margin-sm":"1.25rem","space-xl":"2.5rem","space-lg":"1.5rem","space-sm":"0.5rem","gutter":"1.5rem"},"fontFamily":{"body-sm":["Plus Jakarta Sans"],"display-lg-mobile":["Space Grotesk"],"label-sm":["Space Grotesk"],"body-md":["Plus Jakarta Sans"],"headline-lg":["Space Grotesk"],"headline-sm":["Space Grotesk"],"label-md":["Space Grotesk"],"display-lg":["Space Grotesk"],"headline-lg-mobile":["Space Grotesk"],"headline-md":["Space Grotesk"],"label-lg":["Space Grotesk"],"body-lg":["Plus Jakarta Sans"]},"fontSize":{"body-sm":["13px",{"lineHeight":"18px","letterSpacing":"0.01em","fontWeight":"400"}],"display-lg-mobile":["38px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"700"}],"label-sm":["10px",{"lineHeight":"12px","letterSpacing":"0.08em","fontWeight":"700"}],"body-md":["15px",{"lineHeight":"22px","letterSpacing":"0em","fontWeight":"400"}],"headline-lg":["36px",{"lineHeight":"44px","letterSpacing":"-0.02em","fontWeight":"600"}],"headline-sm":["18px",{"lineHeight":"26px","letterSpacing":"0em","fontWeight":"600"}],"label-md":["12px",{"lineHeight":"16px","letterSpacing":"0.06em","fontWeight":"600"}],"display-lg":["56px",{"lineHeight":"64px","letterSpacing":"-0.03em","fontWeight":"700"}],"headline-lg-mobile":["28px",{"lineHeight":"34px","letterSpacing":"-0.01em","fontWeight":"600"}],"headline-md":["24px",{"lineHeight":"32px","letterSpacing":"-0.01em","fontWeight":"600"}],"label-lg":["14px",{"lineHeight":"18px","letterSpacing":"0.04em","fontWeight":"600"}],"body-lg":["18px",{"lineHeight":"28px","letterSpacing":"-0.01em","fontWeight":"400"}]}}}};</script></head><body class="bg-background font-body-md text-body-md text-on-surface min-h-screen selection:bg-primary-container selection:text-on-primary-container"><header class="fixed top-0 w-full z-50 bg-surface/80 backdrop-blur-xl shadow-[0_1px_8px_rgba(0,0,0,0.04)]"><div class="h-20 w-full px-margin flex items-center justify-between gap-space-lg"><div class="flex items-center gap-space-lg"><div class="flex items-center gap-space-sm"><div class="w-9 h-9 rounded-xl bg-primary-container flex items-center justify-center shadow-[0_0_20px_rgba(99,102,241,0.3)]"><span class="material-symbols-outlined text-on-primary-container text-[20px]">bolt</span></div><div class="flex flex-col"><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface">PULSE</span><span class="font-label-sm text-label-sm tracking-widest text-outline uppercase">CAMPUS EVENTS</span></div></div><nav class="hidden xl:flex items-center gap-space-sm pl-space-md" data-active-classes="bg-surface-container-high text-on-surface font-semibold rounded-lg"><a class="px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="live-feed" href="#">Live Feed</a><a aria-current="page" class="px-space-md py-space-sm transition-all bg-surface-container-high text-on-surface font-semibold rounded-lg" data-path="explore-events" href="#">Explore Events</a><a class="px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="campus-clubs" href="#">Campus Clubs</a><a class="px-space-md py-space-sm rounded-lg font-label-md text-label-md text-on-surface-variant hover:text-on-surface hover:bg-surface-container transition-all" data-path="venues-spaces" href="#">Venues &amp; Spaces</a></nav></div><div class="flex items-center gap-space-md"><div class="relative group" id="role-selector-menu"><button id="role-dropdown-btn" onclick="document.getElementById('role-menu-dropdown').classList.toggle('hidden')" class="px-space-md py-1.5 rounded-lg bg-surface-container-low hover:bg-surface-container border border-outline-variant/30 flex items-center gap-space-sm text-on-surface shadow-sm transition-all focus:outline-none"><span class="flex items-center gap-1.5"><span class="w-2 h-2 rounded-full bg-tertiary animate-pulse shadow-[0_0_8px_rgba(78,222,163,0.8)]"></span><span class="font-label-sm text-label-sm text-outline uppercase tracking-wider">Role:</span><span class="font-label-md text-label-md font-bold text-primary tracking-wide uppercase">Student Hub</span></span><span class="material-symbols-outlined text-outline text-[18px] transition-transform group-hover:translate-y-0.5">expand_more</span></button><div id="role-menu-dropdown" class="absolute right-0 top-full mt-2 w-80 rounded-xl bg-surface-container-lowest/95 backdrop-blur-2xl border border-outline-variant/30 shadow-[0_8px_32px_rgba(0,0,0,0.6)] p-space-xs flex flex-col gap-1 z-50"><div class="px-space-sm py-1.5 border-b border-outline-variant/20 flex items-center justify-between"><span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">Select Access Level</span><span class="px-1.5 py-0.5 rounded bg-surface-container text-[10px] font-mono text-tertiary font-semibold">AUTH 2.0</span></div><a href="#" data-path="live-feed" class="flex items-start justify-between p-space-sm rounded-lg bg-primary-container/20 border border-primary-container/40 text-on-surface transition-all"><div class="flex items-start gap-space-sm"><div class="w-7 h-7 rounded-lg bg-primary-container flex items-center justify-center shrink-0 mt-0.5 shadow-[0_0_12px_rgba(128,131,255,0.4)]"><span class="material-symbols-outlined text-on-primary-container text-[16px]">school</span></div><div class="flex flex-col"><span class="font-label-md text-label-md font-bold text-primary flex items-center gap-1.5">Student Hub</span><span class="font-body-sm text-[12px] leading-tight text-on-surface-variant">Campus Discovery, RSVP, Passes</span></div></div><span class="material-symbols-outlined text-primary text-[18px] shrink-0">check_circle</span></a><a href="#" data-path="event-creator" class="flex items-start justify-between p-space-sm rounded-lg hover:bg-surface-container-high/60 text-on-surface-variant hover:text-on-surface transition-all group/item"><div class="flex items-start gap-space-sm"><div class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center shrink-0 mt-0.5 text-on-surface-variant group-hover/item:text-secondary group-hover/item:bg-secondary-container/20 transition-colors"><span class="material-symbols-outlined text-[16px]">campaign</span></div><div class="flex flex-col"><span class="font-label-md text-label-md font-semibold text-on-surface group-hover/item:text-secondary flex items-center gap-1.5 transition-colors">Organizer Studio</span><span class="font-body-sm text-[12px] leading-tight text-on-surface-variant">Event Management, Rosters, Check-in</span></div></div><span class="material-symbols-outlined text-outline-variant text-[16px] shrink-0 group-hover/item:text-on-surface transition-colors mt-1">arrow_forward</span></a><a href="#" data-path="audit-compliance" class="flex items-start justify-between p-space-sm rounded-lg hover:bg-surface-container-high/60 text-on-surface-variant hover:text-on-surface transition-all group/item"><div class="flex items-start gap-space-sm"><div class="w-7 h-7 rounded-lg bg-surface-container-high flex items-center justify-center shrink-0 mt-0.5 text-on-surface-variant group-hover/item:text-error group-hover/item:bg-error-container/20 transition-colors"><span class="material-symbols-outlined text-[16px]">shield_lock</span></div><div class="flex flex-col"><span class="font-label-md text-label-md font-semibold text-on-surface group-hover/item:text-error flex items-center gap-1.5 transition-colors">Admin Command</span><span class="font-body-sm text-[12px] leading-tight text-on-surface-variant">Campus Oversight, Governance, Security Overrides</span></div></div><span class="material-symbols-outlined text-outline-variant text-[16px] shrink-0 group-hover/item:text-on-surface transition-colors mt-1">arrow_forward</span></a></div></div><button aria-label="Notifications" class="w-10 h-10 rounded-xl bg-surface-container-low hover:bg-surface-container flex items-center justify-center text-on-surface-variant hover:text-on-surface transition-colors"><span class="material-symbols-outlined text-[20px]">notifications</span></button><div class="w-8 h-8 rounded-full bg-primary flex items-center justify-center"><span class="material-symbols-outlined text-on-primary text-[18px]">person</span></div></div></div></header><main class="w-full pt-20 bg-background"><div class="flex flex-col w-full relative">
+<!-- Ambient Atmospheric Backdrops -->
+<div class="absolute top-12 left-1/4 w-[500px] h-[500px] bg-primary-container/10 rounded-full blur-[140px] pointer-events-none -z-10"></div>
+<div class="absolute top-96 right-10 w-[420px] h-[420px] bg-secondary-container/10 rounded-full blur-[160px] pointer-events-none -z-10"></div>
+<div class="absolute bottom-1/3 left-10 w-[460px] h-[460px] bg-tertiary-container/10 rounded-full blur-[150px] pointer-events-none -z-10"></div>
+<!-- Toast Container -->
+<div class="fixed top-24 right-8 z-50 flex flex-col gap-space-sm pointer-events-none" id="toast-container"></div>
+<!-- Main Container -->
+<div class="w-full px-margin-sm lg:px-margin py-space-lg flex flex-col gap-space-xl max-w-[1600px] mx-auto">
+<!-- Hero Banner: Cyber-Editorial High Impact Section -->
+<div class="relative w-full rounded-xl overflow-hidden bg-surface-container shadow-2xl">
+<!-- Background Image with Gradient Scrim -->
+<div class="absolute inset-0 bg-cover bg-center mix-blend-luminosity opacity-35" data-alt="High energy university outdoor rave and illuminated cyber tech festival stage at night with electric purple violet laser beams, neon orange light ribbons, and ecstatic student crowd silhouettes dancing in haze" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuDGDEHT2Asjxp-ofGEto07hsf8bOp9Nc9VFIVNVjkkH0kMerQcE0-ifgzO29HyzCw38jg8fUSgEX0yReviETI104QwOf9gcutqqhKk7xWtDQuv8o25UKuxL418kl_vw_6PukD-ICt99GJNRIzvE-SWDkjOuX-Vjh8XEt5tdX87j3P_GhU4X074iSzspJ9Wqv98FApfCmKD53Rsx4h6JMyNE6EI7btBlmdNih8L-kys')"></div>
+<div class="absolute inset-0 bg-gradient-to-r from-surface-container-lowest via-surface-container-lowest/90 to-surface-container/40"></div>
+<div class="absolute -right-24 -bottom-24 w-96 h-96 bg-primary-container/20 rounded-full blur-3xl pointer-events-none"></div>
+<div class="relative z-10 p-space-lg md:p-space-xl flex flex-col lg:flex-row items-start lg:items-center justify-between gap-space-xl">
+<div class="flex flex-col gap-space-md max-w-2xl">
+<!-- Animated Tag & Telemetry -->
+<div class="flex flex-wrap items-center gap-space-sm">
+<span class="inline-flex items-center gap-1.5 px-space-md py-space-xs rounded-full bg-surface-container-highest text-tertiary font-label-sm text-label-sm uppercase tracking-wider shadow-sm">
+<span class="w-2 h-2 rounded-full bg-tertiary animate-ping"></span>
+              Live Campus Sync
+            </span>
+<span class="px-space-md py-space-xs rounded-full bg-surface-container-high text-on-surface-variant font-label-sm text-label-sm tracking-widest uppercase">
+              SECTOR 04 // MAIN QUAD &amp; INNOVATION LAB
+            </span>
+</div>
+<!-- Hero Headline -->
+<div class="flex flex-col gap-space-xs">
+<span class="font-headline-sm text-headline-sm text-primary tracking-wide uppercase font-bold">Priority Experience</span>
+<h1 class="font-display-lg text-display-lg text-on-surface tracking-tighter leading-none font-bold">
+              NEON GENESIS<br>
+<span class="text-secondary">SPRINGFEST BASS &amp; BYTES</span>
+</h1>
+</div>
+<p class="font-body-lg text-body-lg text-on-surface-variant max-w-xl">
+            The collegiate flagship dual-track hackathon &amp; audio showcase. 48 hours of collaborative neural synthesis, cyber labs, and 140BPM outdoor live sets.
+          </p>
+<!-- Quick Action CTA -->
+<div class="flex flex-wrap items-center gap-space-md pt-space-xs">
+<button class="px-space-xl py-space-md rounded-xl bg-primary-container text-on-primary-container font-label-lg text-label-lg font-bold uppercase tracking-wider flex items-center gap-space-sm shadow-[0_0_24px_rgba(128,131,255,0.45)] hover:scale-105 active:scale-95 transition-all" onclick="handleQuickRSVP('Neon Genesis: Springfest', 'MAIN STAGE / ARENA', 'FREE PASS #0049')">
+<span class="material-symbols-outlined text-[20px]" style="font-variation-settings: 'FILL' 1;">bolt</span>
+<span>1-Click RSVP // Free Pass</span>
+</button>
+<div class="flex items-center gap-space-xs text-on-surface-variant font-label-sm text-label-sm uppercase tracking-wider">
+<span class="material-symbols-outlined text-tertiary text-[18px]">verified_user</span>
+<span>No SSO / Zero-friction Entry</span>
+</div>
+</div>
+</div>
+<!-- Telemetry & Countdown Module -->
+<div class="w-full lg:w-auto flex flex-col gap-space-md bg-surface-container-lowest/80 backdrop-blur-xl p-space-lg rounded-xl shadow-xl min-w-[320px]">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">COUNTDOWN TO OPEN STAGE</span>
+<span class="w-2 h-2 rounded-full bg-secondary-container animate-pulse"></span>
+</div>
+<!-- Dynamic Timer Blocks -->
+<div class="grid grid-cols-4 gap-space-sm text-center">
+<div class="flex flex-col p-space-sm rounded-lg bg-surface-container-high">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface leading-tight" id="timer-days">02</span>
+<span class="font-label-sm text-label-sm text-outline uppercase">DAYS</span>
+</div>
+<div class="flex flex-col p-space-sm rounded-lg bg-surface-container-high">
+<span class="font-headline-lg text-headline-lg font-bold text-on-surface leading-tight" id="timer-hours">14</span>
+<span class="font-label-sm text-label-sm text-outline uppercase">HRS</span>
+</div>
+<div class="flex flex-col p-space-sm rounded-lg bg-surface-container-high">
+<span class="font-headline-lg text-headline-lg font-bold text-secondary leading-tight" id="timer-mins">37</span>
+<span class="font-label-sm text-label-sm text-outline uppercase">MIN</span>
+</div>
+<div class="flex flex-col p-space-sm rounded-lg bg-surface-container-high">
+<span class="font-headline-lg text-headline-lg font-bold text-primary leading-tight" id="timer-secs">30</span>
+<span class="font-label-sm text-label-sm text-outline uppercase">SEC</span>
+</div>
+</div>
+<!-- Live Venue Pulse Status -->
+<div class="flex flex-col gap-space-xs pt-space-xs">
+<div class="flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface-variant font-medium">CAPACITY OCCUPANCY</span>
+<span class="text-secondary font-bold">1,840 / 2,000 (92%)</span>
+</div>
+<div class="w-full h-2 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-gradient-to-r from-primary to-secondary-container rounded-full" style="width: 92%"></div>
+</div>
+<span class="font-label-sm text-label-sm text-outline tracking-tight">VIP Pit Tier Exhausted • General Admission Standing Remaining</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Layout Grid: 8 Columns Events Feed + 4 Columns My Quick Pass Ticket HUD -->
+<div class="grid grid-cols-1 xl:grid-cols-12 gap-space-lg items-start">
+<!-- Primary Events Section (8 cols) -->
+<div class="xl:col-span-8 flex flex-col gap-space-lg">
+<!-- Filter Engine & Taxonomy -->
+<div class="flex flex-col gap-space-md bg-surface-container-low p-space-md rounded-xl shadow-md">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-space-md">
+<!-- Category Chips -->
+<div class="flex items-center gap-space-xs overflow-x-auto pb-1 md:pb-0 scrollbar-none" id="category-filters">
+<button class="filter-btn active px-space-md py-space-xs rounded-full font-label-md text-label-md uppercase tracking-wider bg-primary-container text-on-primary-container shadow-sm transition-all" data-category="all">
+                All Telemetry
+              </button>
+<button class="filter-btn px-space-md py-space-xs rounded-full font-label-md text-label-md uppercase tracking-wider bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-category="hackathons">
+                Hackathons
+              </button>
+<button class="filter-btn px-space-md py-space-xs rounded-full font-label-md text-label-md uppercase tracking-wider bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-category="music">
+                EDM &amp; Music
+              </button>
+<button class="filter-btn px-space-md py-space-xs rounded-full font-label-md text-label-md uppercase tracking-wider bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-category="tech">
+                Career &amp; Tech
+              </button>
+<button class="filter-btn px-space-md py-space-xs rounded-full font-label-md text-label-md uppercase tracking-wider bg-surface-container text-on-surface-variant hover:text-on-surface hover:bg-surface-container-high transition-all" data-category="esports">
+                Esports
+              </button>
+</div>
+<!-- Spots Remaining & Date Controls -->
+<div class="flex items-center gap-space-sm shrink-0">
+<label class="flex items-center gap-2 cursor-pointer px-space-sm py-1.5 rounded-lg bg-surface-container hover:bg-surface-container-high transition-colors">
+<input class="w-4 h-4 rounded accent-primary-container cursor-pointer" id="spots-filter" onchange="toggleUrgentFilter(this)" type="checkbox">
+<span class="font-label-sm text-label-sm text-on-surface-variant uppercase tracking-wider select-none">&lt; 15% Spots Left</span>
+</label>
+<div class="relative">
+<select class="appearance-none bg-surface-container text-on-surface font-label-sm text-label-sm uppercase tracking-wider pl-space-md pr-space-xl py-space-xs rounded-lg cursor-pointer focus:outline-none hover:bg-surface-container-high transition-colors">
+<option>This Weekend</option>
+<option>Next 7 Days</option>
+<option>Next 30 Days</option>
+</select>
+<span class="material-symbols-outlined absolute right-2 top-1/2 -translate-y-1/2 text-outline pointer-events-none text-[16px]">expand_more</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Event Cards Dynamic Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-space-md" id="events-grid">
+<!-- Event 01: Synapse AI Hackathon -->
+<div class="event-card group relative flex flex-col justify-between rounded-xl bg-surface-container-low hover:bg-surface-container transition-all overflow-hidden shadow-lg p-space-md gap-space-md" data-category="hackathons" data-occupancy="92">
+<div class="flex flex-col gap-space-sm">
+<div class="relative h-44 w-full rounded-lg overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Futuristic artificial intelligence student laboratory with matrix code projected on dark acrylic displays, moody ultraviolet neon violet illumination, laptops and hardware circuitry" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvJzymlAqYLKek6ZxBKLEg5M_d54Tn42J62wv7C02XVA3_ijkdAgLxEAfZ1LhuOYyBIXrILHm6u7xHRvglKBcY7WATk1uDRTPobTGayx9Zp_YQuurDgN9ud44iThFxx-DBGfHZIVdBl42PQE3YGfUG3YlWuiyIETM2tbdEAw5wL_G3In6ru61RrRCSEfwgZ6YFfx0RNURC598JSsSl660i30V9PfwEYXokdlevy10">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 flex gap-space-xs">
+<span class="px-space-sm py-0.5 rounded-full bg-secondary-container text-on-secondary font-label-sm text-label-sm uppercase font-bold tracking-wider shadow-sm">
+                    ALMOST FULL
+                  </span>
+<span class="px-space-sm py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-tertiary font-label-sm text-label-sm uppercase tracking-wider">
+                    FREE TICKET
+                  </span>
+</div>
+<div class="absolute bottom-2 left-3 right-3 flex items-center justify-between text-on-surface font-label-sm text-label-sm">
+<span class="flex items-center gap-1 font-semibold text-primary">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 18:00 FRI • 48H SPRINT
+                  </span>
+<span class="text-on-surface-variant font-mono">TURING HALL 101</span>
+</div>
+</div>
+<!-- Title & Meta -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">HOSTED BY ACM STUDENT CHAPTER</span>
+<span class="material-symbols-outlined text-outline-variant hover:text-primary cursor-pointer text-[18px]">bookmark</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface group-hover:text-primary transition-colors">
+                  Synapse AI Neural Hackathon
+                </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+                  Build production autonomous agents with GPU compute cluster grants, industry mentorship, and $15,000 venture pool.
+                </p>
+</div>
+</div>
+<!-- Telemetry & Action Footer -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<!-- Live Progress -->
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Live Registered</span>
+<span class="text-secondary font-bold font-mono">185 / 200 (92%)</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-secondary-container rounded-full" style="width: 92%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container text-[10px] font-bold flex items-center justify-center ring-2 ring-surface">ML</div>
+<div class="w-6 h-6 rounded-full bg-tertiary-container text-on-tertiary text-[10px] font-bold flex items-center justify-center ring-2 ring-surface">AI</div>
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface text-[10px] font-bold flex items-center justify-center ring-2 ring-surface">+84</div>
+</div>
+<button class="rsvp-btn px-space-md py-space-xs rounded-lg bg-primary-container text-on-primary-container hover:bg-primary transition-all font-label-sm text-label-sm uppercase font-bold tracking-wider flex items-center gap-1 shadow-sm" onclick="handleQuickRSVP('Synapse AI Hackathon', 'TURING HALL 101', 'REG #186')">
+<span class="material-symbols-outlined text-[16px]">how_to_reg</span>
+<span>1-Click RSVP</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Event 02: Midnight Astro-Observatory Meet -->
+<div class="event-card group relative flex flex-col justify-between rounded-xl bg-surface-container-low hover:bg-surface-container transition-all overflow-hidden shadow-lg p-space-md gap-space-md" data-category="tech" data-occupancy="64">
+<div class="flex flex-col gap-space-sm">
+<div class="relative h-44 w-full rounded-lg overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Deep space observatory telescope dome open to a starry cosmic night sky with deep purple nebula, cyan laser telescope alignment beams, astronomical equipment and students in silhouette" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD5wIVvlqnHD9TcIEsAUebob5aUhjKZZujv7_KYiqKtV91NoiE6mtfAIiR9f6ZlUGOT8aAFAMICxghVE-bJzTScQoALBKpaAvjt0ERRSgKGDegURZzpnAwcWc4muclMKPENYxyJtwzxI6C861QxCyOlBiGKVCjxi6EIZapmYL3wYBbBYptX4ijyt8WXd2HlUujhw2p1rZnnG22m0RqgQHiDYNu6HbV3oC2FbkDKzqg">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 flex gap-space-xs">
+<span class="px-space-sm py-0.5 rounded-full bg-tertiary-container text-on-tertiary font-label-sm text-label-sm uppercase font-bold tracking-wider shadow-sm">
+                    OPEN RSVP
+                  </span>
+<span class="px-space-sm py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-tertiary font-label-sm text-label-sm uppercase tracking-wider">
+                    FREE TICKET
+                  </span>
+</div>
+<div class="absolute bottom-2 left-3 right-3 flex items-center justify-between text-on-surface font-label-sm text-label-sm">
+<span class="flex items-center gap-1 font-semibold text-primary">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 23:30 SAT • GUEST LECTURE
+                  </span>
+<span class="text-on-surface-variant font-mono">NORTH OBSERVATORY</span>
+</div>
+</div>
+<!-- Title & Meta -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">ASTRONOMY &amp; PHYSICS GUILD</span>
+<span class="material-symbols-outlined text-outline-variant hover:text-primary cursor-pointer text-[18px]">bookmark</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface group-hover:text-primary transition-colors">
+                  Midnight Astro-Observatory Deep-Field
+                </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+                  Direct telemetry observation of Saturn's ring plane crossings and radio-astronomy signal processing workshop with hot chai.
+                </p>
+</div>
+</div>
+<!-- Telemetry & Action Footer -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Live Registered</span>
+<span class="text-tertiary font-bold font-mono">48 / 75 (64%)</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 64%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full bg-secondary-container text-on-secondary text-[10px] font-bold flex items-center justify-center ring-2 ring-surface">AP</div>
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface text-[10px] font-bold flex items-center justify-center ring-2 ring-surface">+47</div>
+</div>
+<button class="rsvp-btn px-space-md py-space-xs rounded-lg bg-primary-container text-on-primary-container hover:bg-primary transition-all font-label-sm text-label-sm uppercase font-bold tracking-wider flex items-center gap-1 shadow-sm" onclick="handleQuickRSVP('Midnight Astro-Observatory', 'NORTH OBSERVATORY', 'REG #049')">
+<span class="material-symbols-outlined text-[16px]">how_to_reg</span>
+<span>1-Click RSVP</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Event 03: Indie Bands Showcase -->
+<div class="event-card group relative flex flex-col justify-between rounded-xl bg-surface-container-low hover:bg-surface-container transition-all overflow-hidden shadow-lg p-space-md gap-space-md" data-category="music" data-occupancy="96">
+<div class="flex flex-col gap-space-sm">
+<div class="relative h-44 w-full rounded-lg overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Underground college music venue interior packed with vibrant students, atmospheric magenta and cyan stage backlighting, vintage electric guitars and drum kits with smoke effects" src="https://lh3.googleusercontent.com/aida-public/AB6AXuC83tWutRiojlR-G4xReWg4r35c1xB6oi-srkr9NXJ8meTEq76KPEC1svAn6_67_lNZ2OxZne2vjNS1NG8NcQm5sv8eXW_Z7e9X5VUg3a9Rduea-31O57XbMAI4ZLu98ydWAXx-GS1EFaQgz-G6hTyxIx9LVdKj0jEE9jhAhJVfODYID_n3GUufSsW7rs7hmIdXlDczSPT8NGIouLxZTtfs6ksOBJm7-wH9FX1ndXc">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 flex gap-space-xs">
+<span class="px-space-sm py-0.5 rounded-full bg-secondary-container text-on-secondary font-label-sm text-label-sm uppercase font-bold tracking-wider shadow-sm animate-pulse">
+                    LAST 12 SPOTS
+                  </span>
+<span class="px-space-sm py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-tertiary font-label-sm text-label-sm uppercase tracking-wider">
+                    FREE TICKET
+                  </span>
+</div>
+<div class="absolute bottom-2 left-3 right-3 flex items-center justify-between text-on-surface font-label-sm text-label-sm">
+<span class="flex items-center gap-1 font-semibold text-primary">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 20:00 THU • LIVE SETS
+                  </span>
+<span class="text-on-surface-variant font-mono">THE BASEMENT VAULT</span>
+</div>
+</div>
+<!-- Title & Meta -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">SOUNDLAB CAMPUS &amp; CO-OP</span>
+<span class="material-symbols-outlined text-outline-variant hover:text-primary cursor-pointer text-[18px]">bookmark</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface group-hover:text-primary transition-colors">
+                  Basement Noise: Indie Bands Live
+                </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+                  Four student shoegaze and math-rock acts performing back-to-back sets. Free analog cassette release for first 50 attendees.
+                </p>
+</div>
+</div>
+<!-- Telemetry & Action Footer -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Live Registered</span>
+<span class="text-secondary font-bold font-mono">288 / 300 (96%)</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-secondary-container rounded-full" style="width: 96%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full bg-primary-container text-on-primary-container text-[10px] font-bold flex items-center justify-center ring-2 ring-surface">SL</div>
+<div class="w-6 h-6 rounded-full bg-tertiary-container text-on-tertiary text-[10px] font-bold flex items-center justify-center ring-2 ring-surface">BN</div>
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface text-[10px] font-bold flex items-center justify-center ring-2 ring-surface">+180</div>
+</div>
+<button class="rsvp-btn px-space-md py-space-xs rounded-lg bg-primary-container text-on-primary-container hover:bg-primary transition-all font-label-sm text-label-sm uppercase font-bold tracking-wider flex items-center gap-1 shadow-sm" onclick="handleQuickRSVP('Basement Noise Indie Bands', 'BASEMENT VAULT', 'REG #289')">
+<span class="material-symbols-outlined text-[16px]">how_to_reg</span>
+<span>1-Click RSVP</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Event 04: Cybersecurity CTF -->
+<div class="event-card group relative flex flex-col justify-between rounded-xl bg-surface-container-low hover:bg-surface-container transition-all overflow-hidden shadow-lg p-space-md gap-space-md" data-category="hackathons" data-occupancy="78">
+<div class="flex flex-col gap-space-sm">
+<div class="relative h-44 w-full rounded-lg overflow-hidden bg-surface-container-highest">
+<img class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500" data-alt="Cybersecurity blue team control room terminal screens running penetration testing tools, neon green terminal text on deep matte black monitors, moody dark university security lab" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCwJ9miq2NQPe7zb8dm2uaQsL886pFKdEFnGrrCTqPMjDe1_9GkLB4yJnnzsQy_G9ku9tTqK6u5Fl2CHaOd9E3MrGPLqzCW2y7mDe43g4YNIDepf4et3MpZDOka0YKP0FXj8SMIC9IdMw-hg5I4jIoP_nC0A1smPmqn0Qm1lKhU_E2n7bfm8pCvWKurO50bnHKAXZMXWEgc6KwT7V1MgGKvSNglu7z9ln_p3-c2VYA">
+<div class="absolute inset-0 bg-gradient-to-t from-surface-container-lowest via-transparent to-transparent"></div>
+<div class="absolute top-3 left-3 flex gap-space-xs">
+<span class="px-space-sm py-0.5 rounded-full bg-tertiary-container text-on-tertiary font-label-sm text-label-sm uppercase font-bold tracking-wider shadow-sm">
+                    OPEN RSVP
+                  </span>
+<span class="px-space-sm py-0.5 rounded-full bg-surface-container-lowest/80 backdrop-blur-md text-tertiary font-label-sm text-label-sm uppercase tracking-wider">
+                    PRIZE: HARDWARE WALLETS
+                  </span>
+</div>
+<div class="absolute bottom-2 left-3 right-3 flex items-center justify-between text-on-surface font-label-sm text-label-sm">
+<span class="flex items-center gap-1 font-semibold text-primary">
+<span class="material-symbols-outlined text-[16px]">schedule</span> 10:00 SAT • 12H CTF
+                  </span>
+<span class="text-on-surface-variant font-mono">CYBER CYLINDER ROOM</span>
+</div>
+</div>
+<!-- Title & Meta -->
+<div class="flex flex-col gap-space-xs">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm text-outline uppercase tracking-widest">CYBERSEC CLUB // WHITE HAT ALLIANCE</span>
+<span class="material-symbols-outlined text-outline-variant hover:text-primary cursor-pointer text-[18px]">bookmark</span>
+</div>
+<h3 class="font-headline-sm text-headline-sm font-bold text-on-surface group-hover:text-primary transition-colors">
+                  Cybersecurity Capture The Flag 2025
+                </h3>
+<p class="font-body-sm text-body-sm text-on-surface-variant line-clamp-2">
+                  Jeopardy-style web exploitation, reverse engineering, and cryptographic binary analysis puzzles for solo or squad entries.
+                </p>
+</div>
+</div>
+<!-- Telemetry & Action Footer -->
+<div class="flex flex-col gap-space-sm pt-space-xs">
+<div class="flex flex-col gap-1">
+<div class="flex justify-between items-center font-label-sm text-label-sm">
+<span class="text-on-surface-variant">Live Registered</span>
+<span class="text-tertiary font-bold font-mono">118 / 150 (78%)</span>
+</div>
+<div class="w-full h-1.5 rounded-full bg-surface-container-highest overflow-hidden">
+<div class="h-full bg-tertiary rounded-full" style="width: 78%"></div>
+</div>
+</div>
+<div class="flex items-center justify-between gap-space-sm pt-1">
+<div class="flex -space-x-2">
+<div class="w-6 h-6 rounded-full bg-tertiary-container text-on-tertiary text-[10px] font-bold flex items-center justify-center ring-2 ring-surface">0x</div>
+<div class="w-6 h-6 rounded-full bg-surface-container-high text-on-surface text-[10px] font-bold flex items-center justify-center ring-2 ring-surface">+117</div>
+</div>
+<button class="rsvp-btn px-space-md py-space-xs rounded-lg bg-primary-container text-on-primary-container hover:bg-primary transition-all font-label-sm text-label-sm uppercase font-bold tracking-wider flex items-center gap-1 shadow-sm" onclick="handleQuickRSVP('Cybersecurity CTF 2025', 'CYBER CYLINDER', 'REG #119')">
+<span class="material-symbols-outlined text-[16px]">how_to_reg</span>
+<span>1-Click RSVP</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Pagination / Stream Status Indicator -->
+<div class="flex items-center justify-between p-space-md rounded-xl bg-surface-container-lowest text-on-surface-variant font-label-sm text-label-sm uppercase">
+<span class="flex items-center gap-2">
+<span class="w-2 h-2 rounded-full bg-tertiary"></span>
+            SHOWING 4 OF 28 CAMPUS PROTOCOLS
+          </span>
+<button class="px-space-md py-space-xs rounded-lg bg-surface-container hover:bg-surface-container-high text-on-surface transition-all flex items-center gap-1 font-semibold">
+<span>Load Expanded Query</span>
+<span class="material-symbols-outlined text-[16px]">south</span>
+</button>
+</div>
+</div>
+<!-- Right Floating Panel: My Quick Pass Drawer / HUD (4 cols) -->
+<div class="xl:col-span-4 flex flex-col gap-space-md sticky top-24">
+<!-- Quick Pass Header Container -->
+<div class="bg-surface-container p-space-md rounded-xl shadow-xl flex flex-col gap-space-md">
+<div class="flex items-center justify-between pb-space-xs">
+<div class="flex items-center gap-space-xs">
+<span class="material-symbols-outlined text-primary text-[22px]">confirmation_number</span>
+<span class="font-headline-sm text-headline-sm font-bold text-on-surface">My Quick Pass</span>
+</div>
+<span class="px-space-xs py-0.5 rounded bg-surface-container-highest text-outline font-mono text-label-sm">
+              /api/me/registrations
+            </span>
+</div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+            Live wallet credentials valid at all campus scanner kiosks. No physical pass or student login required for registered events.
+          </p>
+<!-- Registrations List -->
+<div class="flex flex-col gap-space-md" id="registrations-list">
+<!-- Ticket Card 1 -->
+<div class="ticket-card relative p-space-md rounded-xl bg-surface-container-lowest flex flex-col gap-space-sm shadow-md" id="ticket-01">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-primary uppercase font-bold tracking-wider">HACKATHON • BADGE CONFIRMED</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Synapse AI Hackathon</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">Turing Hall 101 • Tomorrow @ 18:00</span>
+</div>
+<!-- Inline SVG QR Code Badge -->
+<div class="p-1.5 rounded-lg bg-on-surface shrink-0">
+<svg class="w-12 h-12 text-surface-container-lowest" fill="currentColor" viewBox="0 0 24 24">
+<path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm-2 10h8v8H2v-8zm2 2v4h4v-4H4zm10-14h8v8h-8V2zm2 2v4h4V4h-4zm2 8h-4v2h2v2h-2v4h2v-2h2v2h2v-4h-2v-2h2v-2zm-2 2v2h-2v-2h2zm4-2h2v4h-2v-4zm0 6h2v2h-2v-2z"></path>
+</svg>
+</div>
+</div>
+<!-- Ticket Code & Actions -->
+<div class="flex items-center justify-between pt-space-xs bg-surface-container/60 p-space-xs rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase">PASS KEY</span>
+<span class="font-mono text-label-sm text-tertiary font-bold">SYN-88402-ACM</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="p-1.5 rounded hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface transition-colors" onclick="downloadPass('SYN-88402-ACM')" title="Download Wallet Pass">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="p-1.5 rounded hover:bg-error-container text-on-surface-variant hover:text-error transition-colors" onclick="cancelTicket('ticket-01', 'Synapse AI Hackathon')" title="Instant Cancel Registration">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Ticket Card 2 -->
+<div class="ticket-card relative p-space-md rounded-xl bg-surface-container-lowest flex flex-col gap-space-sm shadow-md" id="ticket-02">
+<div class="flex items-start justify-between gap-space-sm">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-secondary uppercase font-bold tracking-wider">LIVE MUSIC • GUESTLIST #49</span>
+<h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">Neon Genesis Bass</h4>
+<span class="font-body-sm text-body-sm text-on-surface-variant font-mono">Main Quad Stage • Sat @ 21:00</span>
+</div>
+<!-- Inline SVG QR Code Badge -->
+<div class="p-1.5 rounded-lg bg-on-surface shrink-0">
+<svg class="w-12 h-12 text-surface-container-lowest" fill="currentColor" viewBox="0 0 24 24">
+<path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm-2 10h8v8H2v-8zm2 2v4h4v-4H4zm10-14h8v8h-8V2zm2 2v4h4V4h-4zm-4 10h4v2h-4v-2zm6 0h2v4h-2v-4zm-2 4h4v2h-4v-2zm-4 2h2v2h-2v-2zm6 0h2v2h-2v-2z"></path>
+</svg>
+</div>
+</div>
+<!-- Ticket Code & Actions -->
+<div class="flex items-center justify-between pt-space-xs bg-surface-container/60 p-space-xs rounded-lg">
+<div class="flex flex-col">
+<span class="font-label-sm text-label-sm text-outline uppercase">PASS KEY</span>
+<span class="font-mono text-label-sm text-secondary font-bold">NGS-49102-LIVE</span>
+</div>
+<div class="flex items-center gap-space-xs">
+<button class="p-1.5 rounded hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface transition-colors" onclick="downloadPass('NGS-49102-LIVE')" title="Download Wallet Pass">
+<span class="material-symbols-outlined text-[18px]">download</span>
+</button>
+<button class="p-1.5 rounded hover:bg-error-container text-on-surface-variant hover:text-error transition-colors" onclick="cancelTicket('ticket-02', 'Neon Genesis Bass')" title="Instant Cancel Registration">
+<span class="material-symbols-outlined text-[18px]">cancel</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Telemetry Summary -->
+<div class="p-space-sm rounded-lg bg-surface-container-high/60 flex items-center justify-between text-outline font-label-sm text-label-sm">
+<span class="flex items-center gap-1">
+<span class="material-symbols-outlined text-[16px] text-tertiary">check_circle</span>
+              Auto-Sync: Enabled
+            </span>
+<span class="text-on-surface font-mono">2 Active Passes</span>
+</div>
+</div>
+<!-- Campus Signal Widget -->
+<div class="bg-surface-container-low p-space-md rounded-xl flex flex-col gap-space-sm shadow-md">
+<div class="flex items-center justify-between">
+<span class="font-label-sm text-label-sm uppercase tracking-widest text-outline">KINETIC HEATMAP</span>
+<span class="font-label-sm text-label-sm text-primary font-bold">HIGH DENSITY</span>
+</div>
+<div class="flex items-center gap-space-sm">
+<div class="w-3 h-3 rounded-full bg-secondary-container animate-ping"></div>
+<p class="font-body-sm text-body-sm text-on-surface-variant">
+              Turing Hall &amp; Quad Arena reporting 85%+ peak check-in density. Fast-track scanner lane #3 is currently shortest.
+            </p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<script>
+  // Countdown Timer Logic
+  (function initCountdown() {
+    let secondsRemaining = 2 * 86400 + 14 * 3600 + 38 * 60 + 49;
+    const daysEl = document.getElementById('timer-days');
+    const hoursEl = document.getElementById('timer-hours');
+    const minsEl = document.getElementById('timer-mins');
+    const secsEl = document.getElementById('timer-secs');
+
+    setInterval(() => {
+      if (secondsRemaining <= 0) return;
+      secondsRemaining--;
+
+      const d = Math.floor(secondsRemaining / (3600 * 24));
+      const h = Math.floor((secondsRemaining % (3600 * 24)) / 3600);
+      const m = Math.floor((secondsRemaining % 3600) / 60);
+      const s = Math.floor(secondsRemaining % 60);
+
+      if (daysEl) daysEl.innerText = d.toString().padStart(2, '0');
+      if (hoursEl) hoursEl.innerText = h.toString().padStart(2, '0');
+      if (minsEl) minsEl.innerText = m.toString().padStart(2, '0');
+      if (secsEl) secsEl.innerText = s.toString().padStart(2, '0');
+    }, 1000);
+  })();
+
+  // Instant 1-Click RSVP Handler with Toast and Live Pass Injection
+  window.handleQuickRSVP = function(eventTitle, venue, passId) {
+    const toastContainer = document.getElementById('toast-container');
+    if (!toastContainer) return;
+
+    // Toast Element
+    const toast = document.createElement('div');
+    toast.className = 'pointer-events-auto flex items-center gap-3 p-4 rounded-xl bg-surface-container-highest text-on-surface shadow-2xl backdrop-blur-xl transition-all duration-300 transform translate-y-2 opacity-0';
+    toast.innerHTML = `
+      <div class="w-8 h-8 rounded-lg bg-tertiary-container text-on-tertiary flex items-center justify-center shrink-0">
+        <span class="material-symbols-outlined text-[20px]">task_alt</span>
+      </div>
+      <div class="flex flex-col">
+        <span class="font-headline-sm text-headline-sm font-bold text-on-surface leading-tight">Registered!</span>
+        <span class="font-body-sm text-body-sm text-on-surface-variant font-mono">Added to /api/me/registrations</span>
+        <span class="font-label-sm text-label-sm text-primary uppercase mt-0.5">${eventTitle} • Pass active</span>
+      </div>
+      <button onclick="this.parentElement.remove()" class="text-outline hover:text-on-surface ml-2">
+        <span class="material-symbols-outlined text-[18px]">close</span>
+      </button>
+    `;
+    toastContainer.appendChild(toast);
+
+    requestAnimationFrame(() => {
+      toast.classList.remove('translate-y-2', 'opacity-0');
+    });
+
+    setTimeout(() => {
+      toast.classList.add('opacity-0', 'translate-x-4');
+      setTimeout(() => toast.remove(), 400);
+    }, 4500);
+
+    // Dynamic Injection into 'My Quick Pass' drawer if not already existing
+    const list = document.getElementById('registrations-list');
+    if (list) {
+      const newTicketId = 'ticket-' + Date.now();
+      const newCard = document.createElement('div');
+      newCard.id = newTicketId;
+      newCard.className = 'ticket-card relative p-space-md rounded-xl bg-surface-container-lowest flex flex-col gap-space-sm shadow-md transition-all duration-500 scale-95 opacity-0';
+      newCard.innerHTML = `
+        <div class="flex items-start justify-between gap-space-sm">
+          <div class="flex flex-col">
+            <span class="font-label-sm text-label-sm text-tertiary uppercase font-bold tracking-wider">JUST ADDED // FASTPASS</span>
+            <h4 class="font-headline-sm text-headline-sm text-on-surface font-bold">${eventTitle}</h4>
+            <span class="font-body-sm text-body-sm text-on-surface-variant font-mono">${venue} • Just Now</span>
+          </div>
+          <div class="p-1.5 rounded-lg bg-on-surface shrink-0">
+            <svg class="w-12 h-12 text-surface-container-lowest" viewBox="0 0 24 24" fill="currentColor">
+              <path d="M2 2h8v8H2V2zm2 2v4h4V4H4zm-2 10h8v8H2v-8zm2 2v4h4v-4H4zm10-14h8v8h-8V2zm2 2v4h4V4h-4zm2 8h-4v2h2v2h-2v4h2v-2h2v2h2v-4h-2v-2h2v-2zm-2 2v2h-2v-2h2zm4-2h2v4h-2v-4zm0 6h2v2h-2v-2z"/>
+            </svg>
+          </div>
+        </div>
+        <div class="flex items-center justify-between pt-space-xs bg-surface-container/60 p-space-xs rounded-lg">
+          <div class="flex flex-col">
+            <span class="font-label-sm text-label-sm text-outline uppercase">PASS KEY</span>
+            <span class="font-mono text-label-sm text-label-sm text-tertiary font-bold">${passId}</span>
+          </div>
+          <div class="flex items-center gap-space-xs">
+            <button onclick="downloadPass('${passId}')" class="p-1.5 rounded hover:bg-surface-container-highest text-on-surface-variant hover:text-on-surface transition-colors" title="Download Wallet Pass">
+              <span class="material-symbols-outlined text-[18px]">download</span>
+            </button>
+            <button onclick="cancelTicket('${newTicketId}', '${eventTitle}')" class="p-1.5 rounded hover:bg-error-container text-on-surface-variant hover:text-error transition-colors" title="Instant Cancel Registration">
+              <span class="material-symbols-outlined text-[18px]">cancel</span>
+            </button>
+          </div>
+        </div>
+      `;
+      list.prepend(newCard);
+      requestAnimationFrame(() => {
+        newCard.classList.remove('scale-95', 'opacity-0');
+      });
+    }
+  };
+
+  // Instant Ticket Cancellation
+  window.cancelTicket = function(cardId, title) {
+    const card = document.getElementById(cardId);
+    if (!card) return;
+    card.classList.add('opacity-0', 'scale-90');
+    setTimeout(() => {
+      card.remove();
+      // Cancellation Toast
+      const toastContainer = document.getElementById('toast-container');
+      if (toastContainer) {
+        const toast = document.createElement('div');
+        toast.className = 'pointer-events-auto flex items-center gap-3 p-3 rounded-xl bg-surface-container-high text-on-surface shadow-xl backdrop-blur-xl';
+        toast.innerHTML = `
+          <span class="material-symbols-outlined text-secondary text-[20px]">delete_sweep</span>
+          <span class="font-body-sm text-body-sm">Registration removed: <strong>${title}</strong></span>
+        `;
+        toastContainer.appendChild(toast);
+        setTimeout(() => toast.remove(), 3000);
+      }
+    }, 300);
+  };
+
+  // Download Pass Simulation
+  window.downloadPass = function(passKey) {
+    alert("Downloading cryptographic offline pass file: " + passKey + ".pkpass");
+  };
+
+  // Category Filter Switching
+  document.querySelectorAll('.filter-btn').forEach(btn => {
+    btn.addEventListener('click', function() {
+      document.querySelectorAll('.filter-btn').forEach(b => {
+        b.classList.remove('bg-primary-container', 'text-on-primary-container', 'active');
+        b.classList.add('bg-surface-container', 'text-on-surface-variant');
+      });
+      this.classList.add('bg-primary-container', 'text-on-primary-container', 'active');
+      this.classList.remove('bg-surface-container', 'text-on-surface-variant');
+
+      const cat = this.getAttribute('data-category');
+      const cards = document.querySelectorAll('.event-card');
+      cards.forEach(card => {
+        if (cat === 'all' || card.getAttribute('data-category') === cat) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  });
+
+  // Toggle Spots Remaining Filter (< 15% remaining = occupancy >= 85%)
+  window.toggleUrgentFilter = function(checkbox) {
+    const cards = document.querySelectorAll('.event-card');
+    cards.forEach(card => {
+      const occupancy = parseInt(card.getAttribute('data-occupancy') || '0', 10);
+      if (checkbox.checked) {
+        if (occupancy >= 85) {
+          card.style.display = 'flex';
+        } else {
+          card.style.display = 'none';
+        }
+      } else {
+        card.style.display = 'flex';
+      }
+    });
+  };
+</script></main><footer class="w-full bg-surface-container-lowest py-space-xl"><div class="w-full px-margin flex flex-col md:flex-row items-center justify-between gap-space-md"><div class="flex items-center gap-space-sm"><span class="font-headline-sm text-headline-sm font-bold tracking-tight text-on-surface">PULSE // CAMPUS</span><span class="font-label-sm text-label-sm text-outline">TELEMETRY CORE</span></div><p class="font-body-sm text-body-sm text-on-surface-variant">Next-generation collegiate live experiences and automated scheduling infrastructure.</p><div class="flex items-center gap-space-lg font-label-sm text-label-sm uppercase text-on-surface-variant"><a class="hover:text-on-surface transition-colors" data-path="explore-events" href="#">Schedule</a><a class="hover:text-on-surface transition-colors" data-path="live-feed" href="#">Status</a><a class="hover:text-on-surface transition-colors" data-path="venues-spaces" href="#">Directory</a></div></div></footer>
+
+</body></html>
