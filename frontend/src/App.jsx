@@ -30,7 +30,11 @@ async function api(path, options = {}) {
   const payload = (response.headers.get("content-type") || "").includes("application/json")
     ? await response.json()
     : null;
-  if (!response.ok) throw new Error(payload?.error || `Request failed (${response.status})`);
+  if (!response.ok) {
+    const error = new Error(payload?.error || `Request failed (${response.status})`);
+    error.status = response.status;
+    throw error;
+  }
   return payload;
 }
 
@@ -90,7 +94,7 @@ function Header({ role, onRole, user, users, onUser, connection }) {
 
 function Capacity({ event }) {
   const capacity = capacityFor(event);
-  if (!capacity) return <div className="capacity-unknown">Seat count unavailable from API</div>;
+  if (!capacity) return <div className="capacity-unknown">{event.countKnown === null ? "Syncing seat count…" : "Seat count unavailable from API"}</div>;
   return <div className="capacity-meter"><div className="capacity-caption"><span>LIVE REGISTERED</span><b className={capacity.ratio >= 90 ? "hot" : ""}>{capacity.registered} / {capacity.total} <small>({Math.round(capacity.ratio)}%)</small></b></div><div className="meter-track"><i className={capacity.ratio >= 90 ? "hot" : ""} style={{ width: `${capacity.ratio}%` }} /></div><div className="capacity-caption lower"><span>{capacity.left} spots remaining</span><span>{capacity.ratio >= 90 ? "ALMOST FULL" : "OPEN RSVP"}</span></div></div>;
 }
 
@@ -112,21 +116,22 @@ function StudentView({ events, registrations, selectedUser, loading, error, onRe
   const openSeats = events.reduce((sum, event) => sum + (capacityFor(event)?.left || 0), 0);
   const liveEvents = events.filter((event) => !["draft", "cancelled", "archived"].includes(String(event.status || "").toLowerCase())).length;
   const heroStats = [[String(events.length).padStart(2, "0"), "EVENTS"], [String(liveEvents).padStart(2, "0"), "LIVE"], [String(registrations.length).padStart(2, "0"), "MY PASSES"], [openSeats.toLocaleString(), "SEATS"]];
+  const countsSyncing = events.some((event) => event.countKnown === null);
   const quickPasses = registrations.map((registration) => events.find((event) => String(event.id) === String(registration.event_id))).filter(Boolean);
   return (
     <main className="student-page" id="top">
       <section className="student-hero" style={{ backgroundImage: `linear-gradient(90deg,#0d111a 0%,#101520e8 49%,#11152055 100%), url("${imageFor(featured)}")` }}>
         <div className="hero-art" />
         <div className="hero-copy"><div className="hero-tags"><span><i /> LIVE CAMPUS SYNC</span><span>SECTOR 04 // MAIN QUAD &amp; INNOVATION LAB</span></div><p className="hero-eyebrow">PRIORITY EXPERIENCE</p><h1>{featured?.title || "Your next campus story"}<br /><em>starts right here.</em></h1><p className="hero-description">Discover what’s happening across campus. Find your people, build your pass, and RSVP in one click.</p><div className="hero-actions"><a className="primary-button" href="#events"><Icon>bolt</Icon> EXPLORE LIVE EVENTS</a><span className="quiet-note"><Icon>verified_user</Icon> NO SSO / ZERO-FRICTION ENTRY</span></div></div>
-        <div className="hero-telemetry"><div className="hero-role"><span>CAMPUS LIVE // API SYNC</span><b>CONNECTED</b></div>{heroStats.map(([value, label]) => <div className="count-cell" key={label}><strong>{loading ? "—" : value}</strong><small>{label}</small></div>)}<div className="hero-capacity"><Capacity event={featured || {}} /></div></div>
+        <div className="hero-telemetry"><div className="hero-role"><span>CAMPUS LIVE // API SYNC</span><b>CONNECTED</b></div>{heroStats.map(([value, label]) => <div className="count-cell" key={label}><strong>{loading || countsSyncing ? "—" : value}</strong><small>{label}</small></div>)}<div className="hero-capacity"><Capacity event={featured || {}} /></div></div>
       </section>
       <section className="student-content" id="events">
         <div className="student-feed">
           <div className="student-toolbar"><div className="category-filter">{["All telemetry", "Hackathons", "EDM & music", "Career & tech", "Esports"].map((item) => <button type="button" key={item} className={filter === item ? "selected" : ""} onClick={() => setFilter(item)}>{item}</button>)}</div><label className="search-input"><Icon>search</Icon><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search campus events" /></label></div>
-          {loading ? <div className="empty-panel">Syncing campus protocols…</div> : error ? <div className="empty-panel"><b>Campus signal is quiet.</b><p>{error}</p><button className="secondary-button" onClick={onRefresh} type="button">Retry sync</button></div> : filtered.length ? <div className="student-event-grid">{filtered.map((event, index) => { const cap = capacityFor(event); const isRegistered = registeredIds.has(String(event.id)); return <article className="student-event-card" key={event.id}><div className={`event-art tone-${toneFor(event)}`} style={{ backgroundImage: `linear-gradient(0deg,#10151ee8,transparent 65%), url("${imageFor(event)}")` }}><span className="event-chip">{cap?.ratio >= 90 ? "ALMOST FULL" : "OPEN RSVP"}</span><span className="event-chip free-chip">FREE TICKET</span><div className="art-orbit" /><span className="art-index">PULSE // {String(index + 1).padStart(2, "0")}</span><div className="event-art-caption"><Icon>{categoryFor(event) === "EDM & music" ? "music_note" : categoryFor(event) === "Hackathons" ? "terminal" : "auto_awesome"}</Icon> CAMPUS EVENT // {titleCase(event.status)}</div></div><div className="student-event-info"><p className="host-label">HOSTED BY CAMPUS COMMUNITY <span>♧</span></p><h2>{event.title}</h2><p className="event-description">A live campus experience. Connect with students and make room for something new.</p><Capacity event={event} /><div className="student-event-footer"><span className="host-id">HOST // {shortId(event.organizer_id)}</span><button className="rsvp-button" type="button" disabled={pending === String(event.id) || isRegistered || !cap || cap.left <= 0} onClick={() => onRegister(event)}>{pending === String(event.id) ? "RESERVING…" : isRegistered ? "✓ RSVP CONFIRMED" : "♙ 1-CLICK RSVP"}</button></div></div></article>; })}</div> : <div className="empty-panel">No events match this filter.</div>}
+          {loading ? <div className="empty-panel">Syncing campus protocols…</div> : error ? <div className="empty-panel"><b>Campus signal is quiet.</b><p>{error}</p><button className="secondary-button" onClick={onRefresh} type="button">Retry sync</button></div> : filtered.length ? <div className="student-event-grid">{filtered.map((event, index) => { const cap = capacityFor(event); const isRegistered = registeredIds.has(String(event.id)); return <article className="student-event-card" key={event.id}><div className={`event-art tone-${toneFor(event)}`} style={{ backgroundImage: `linear-gradient(0deg,#10151ee8,transparent 65%), url("${imageFor(event)}")` }}><span className="event-chip">{event.countKnown === null ? "CHECKING CAPACITY" : cap?.ratio >= 90 ? "ALMOST FULL" : cap ? "OPEN RSVP" : "COUNT CHECK"}</span><span className="event-chip free-chip">FREE TICKET</span><div className="art-orbit" /><span className="art-index">PULSE // {String(index + 1).padStart(2, "0")}</span><div className="event-art-caption"><Icon>{categoryFor(event) === "EDM & music" ? "music_note" : categoryFor(event) === "Hackathons" ? "terminal" : "auto_awesome"}</Icon> CAMPUS EVENT // {titleCase(event.status)}</div></div><div className="student-event-info"><p className="host-label">HOSTED BY CAMPUS COMMUNITY <span>♧</span></p><h2>{event.title}</h2><p className="event-description">A live campus experience. Connect with students and make room for something new.</p><Capacity event={event} /><div className="student-event-footer"><span className="host-id">HOST // {shortId(event.organizer_id)}</span><button className="rsvp-button" type="button" disabled={pending === String(event.id) || isRegistered || (cap && cap.left <= 0) || !Number(event.capacity)} onClick={() => onRegister(event)}>{pending === String(event.id) ? "RESERVING…" : isRegistered ? "✓ RSVP CONFIRMED" : "♙ 1-CLICK RSVP"}</button></div></div></article>; })}</div> : <div className="empty-panel">No events match this filter.</div>}
           <div className="feed-footer"><span><i /> SHOWING {filtered.length} OF {events.length} CAMPUS PROTOCOLS</span><button type="button" onClick={onRefresh}>SYNC LIVE FEED <Icon>refresh</Icon></button></div>
         </div>
-        <aside className="student-aside"><section className="side-card pass-card"><div className="side-card-heading"><h2><Icon>confirmation_number</Icon> My Quick Pass</h2><code>/api/me/registrations</code></div><p>Live wallet credentials for campus scanner kiosks. No physical pass required.</p><div className="quick-pass-list">{quickPasses.length ? quickPasses.map((event) => <div className="quick-pass" key={event.id}><div><small>RSVP CONFIRMED</small><b>{event.title}</b><span>{titleCase(event.status)} · {shortId(event.id)}</span></div><div className="fake-qr" aria-hidden="true"><i /></div></div>) : <div className="pass-empty">{selectedUser ? "No active passes yet. RSVP to an event to add one here." : "Select a student account to load your passes."}</div>}</div><div className="pass-sync"><span><i /> Auto-sync enabled</span><b>{quickPasses.length} active passes</b></div></section><section className="side-card heatmap-card"><div className="side-card-heading"><h2>Kinetic heatmap</h2><b className="orange-text">CAMPUS LIVE</b></div><p>Seat availability is calculated from live registration counts.</p><div className="heatmap-bars">{events.slice(0, 5).map((event) => <div key={event.id}><span>{event.title}</span><i><b style={{ width: `${capacityFor(event)?.ratio || 0}%` }} /></i></div>)}</div></section></aside>
+        <aside className="student-aside"><section className="side-card pass-card"><div className="side-card-heading"><h2><Icon>confirmation_number</Icon> My Quick Pass</h2><code>/api/me/registrations</code></div><p>Live RSVP confirmations. QR credentials need a pass-generation API, which isn’t connected yet.</p><div className="quick-pass-list">{quickPasses.length ? quickPasses.map((event) => <div className="quick-pass" key={event.id}><div><small>RSVP CONFIRMED</small><b>{event.title}</b><span>{titleCase(event.status)} · {shortId(event.id)}</span></div><div className="fake-qr" aria-hidden="true"><i /></div></div>) : <div className="pass-empty">{selectedUser ? "No active passes yet. RSVP to an event to add one here." : "Select a student account to load your passes."}</div>}</div><div className="pass-sync"><span><i /> Auto-sync enabled</span><b>{quickPasses.length} active passes</b></div></section><section className="side-card heatmap-card"><div className="side-card-heading"><h2>Kinetic heatmap</h2><b className="orange-text">CAMPUS LIVE</b></div><p>Seat availability is calculated from live registration counts.</p><div className="heatmap-bars">{events.slice(0, 5).map((event) => <div key={event.id}><span>{event.title}</span><i><b style={{ width: `${capacityFor(event)?.ratio || 0}%` }} /></i></div>)}</div></section></aside>
       </section>
     </main>
   );
@@ -141,20 +146,54 @@ function Metric({ label, value, note, tone = "violet", icon = "analytics" }) {
   return <article className={`metric-card metric-${tone}`}><div className="metric-top"><small>{label}</small><span><Icon>{icon}</Icon></span></div><strong>{value}</strong><p>{note}</p></article>;
 }
 
-function OrganizerView({ events, users, selectedUser, onUser, loading, error, selectedEventId, onEvent, roster, rosterLoading, onRefresh }) {
+function OrganizerBrowse({ events, organizerId, registeredIds, onRegister, pending }) {
+  const [query, setQuery] = useState("");
+  const browsable = events.filter((event) => !["draft", "cancelled", "archived"].includes(String(event.status || "").toLowerCase()))
+    .filter((event) => `${event.title} ${event.status}`.toLowerCase().includes(query.trim().toLowerCase()));
+  return <section className="organizer-browse" id="browse-events">
+    <div className="panel-title-row"><div><h2>Browse campus events</h2><p>Explore live events across campus. You can RSVP to another organizer’s event, but not your own.</p></div><span className="live-chip"><i /> {browsable.length} AVAILABLE</span></div>
+    <label className="browse-search"><Icon>search</Icon><input value={query} onChange={(event) => setQuery(event.target.value)} placeholder="Search campus events" /></label>
+    {browsable.length ? <div className="browse-event-grid">{browsable.map((event) => {
+      const capacity = capacityFor(event);
+      const isOwner = String(event.organizer_id) === String(organizerId);
+      const isRegistered = registeredIds.has(String(event.id));
+      const full = capacity && capacity.left <= 0;
+      return <article className="browse-event-card" key={event.id}>
+        <div className={`browse-event-art tone-${toneFor(event)}`} style={{ backgroundImage: `linear-gradient(0deg,#10151fe8,transparent 75%),url("${imageFor(event)}")` }}><span className="status-tag">{titleCase(event.status)}</span><span className="browse-event-id">{shortId(event.id)}</span></div>
+        <div className="browse-event-body"><div className="browse-event-heading"><h3>{event.title}</h3><span className="host-tag">{isOwner ? "YOUR EVENT" : `HOST ${shortId(event.organizer_id)}`}</span></div><Capacity event={event} /><button className={`secondary-button browse-rsvp ${isOwner ? "owner-event" : ""}`} type="button" disabled={isOwner || isRegistered || full || pending === String(event.id) || !Number(event.capacity)} onClick={() => onRegister(event)}>{isOwner ? "YOUR EVENT · RSVP DISABLED" : isRegistered ? "RSVP CONFIRMED" : full ? "EVENT FULL" : pending === String(event.id) ? "RESERVING…" : "RSVP TO EVENT"}</button></div>
+      </article>;
+    })}</div> : <div className="empty-panel">{query ? "No events match your search." : "There are no campus events to browse yet."}</div>}
+  </section>;
+}
+
+function OrganizerView({ events, users, selectedUser, loading, error, selectedEventId, onEvent, roster, rosterLoading, onRefresh, onCreateEvent, registeredIds, onRegister, pending }) {
+  const [showEventForm, setShowEventForm] = useState(false);
+  const [newTitle, setNewTitle] = useState("");
+  const [newCapacity, setNewCapacity] = useState("100");
+  const [creating, setCreating] = useState(false);
+  const [createError, setCreateError] = useState("");
   const ownedEvents = selectedUser ? events.filter((event) => String(event.organizer_id) === String(selectedUser)) : events;
   const selectedEvent = ownedEvents.find((event) => String(event.id) === String(selectedEventId)) || ownedEvents[0];
   const attendees = users.filter((user) => user.role === "student");
   const totalRsvps = ownedEvents.reduce((sum, event) => sum + (Number(event.registeredCount) || 0), 0);
   const capacity = ownedEvents.reduce((sum, event) => sum + (Number(event.capacity) || 0), 0);
   const fill = capacity ? (totalRsvps / capacity * 100).toFixed(1) : "0.0";
-  return <div className="console-layout" id="top"><ConsoleSidebar role="organizer" /><main className="console-main" id="console"><div className="console-eyebrow"><i /> CONSOLE OPERATIONAL // ORG-CLUSTER-04 <span>ID: {shortId(selectedUser)}</span></div><div className="console-title-row"><div><h1>Organizer Studio</h1><p>Manage live guest rosters and monitor event capacity from your campus console.</p></div><div className="console-actions"><button className="secondary-button" type="button" onClick={onRefresh}><Icon>sync</Icon> Sync DB API</button><button className="primary-button disabled-action" type="button" disabled title="Event creation is not available in the connected API"><Icon>add_circle</Icon> New Pipeline Event</button></div></div>
+  async function submitEvent(event) {
+    event.preventDefault();
+    setCreating(true); setCreateError("");
+    try {
+      await onCreateEvent({ title: newTitle, capacity: Number(newCapacity) });
+      setNewTitle(""); setNewCapacity("100"); setShowEventForm(false);
+    } catch (submitError) { setCreateError(submitError.message); }
+    finally { setCreating(false); }
+  }
+  return <div className="console-layout" id="top"><ConsoleSidebar role="organizer" /><main className="console-main" id="console"><div className="console-eyebrow"><i /> CONSOLE OPERATIONAL // ORG-CLUSTER-04 <span>ID: {shortId(selectedUser)}</span></div><div className="console-title-row"><div><h1>Organizer Studio</h1><p>Manage live guest rosters, create campus events, and monitor capacity from your console.</p></div><div className="console-actions"><button className="secondary-button" type="button" onClick={onRefresh}><Icon>sync</Icon> Sync DB API</button><button className="primary-button" type="button" disabled={!selectedUser} onClick={() => { setShowEventForm((visible) => !visible); document.getElementById("organizer-events")?.scrollIntoView({ behavior: "smooth", block: "start" }); }}><Icon>{showEventForm ? "close" : "add_circle"}</Icon> {showEventForm ? "Close Event Form" : "New Event"}</button></div></div>
     {!selectedUser && <div className="notice-banner">Select an organizer account in the top bar. Showing all events until an organizer is selected.</div>}
     <section className="metric-grid"><Metric label="ACTIVE MANAGED EVENTS" value={String(ownedEvents.length).padStart(2, "0")} note="Visible in campus feed" icon="calendar_month" tone="violet" /><Metric label="TOTAL RSVPS" value={totalRsvps.toLocaleString()} note="Across managed events" icon="group_add" tone="orange" /><Metric label="AVG. CAPACITY FILL" value={`${fill}%`} note={`${totalRsvps} / ${capacity} slots`} icon="donut_large" tone="mint" /><Metric label="CHECK-IN READINESS" value="—" note="No check-in endpoint connected" icon="qr_code_scanner" tone="blue" /></section>
     <div className="target-event-bar"><b>TARGET EVENT:</b><select value={selectedEvent?.id || ""} onChange={(event) => onEvent(event.target.value)} aria-label="Choose event">{ownedEvents.map((event) => <option key={event.id} value={event.id}>{event.title}</option>)}</select><span className="live-chip"><i /> LIVE ROSTER</span><code>API // /api/events/{shortId(selectedEvent?.id)}</code></div>
     <section className="organizer-content-grid"><div className="console-panel roster-panel"><div className="panel-title-row"><div><h2>Attendee roster</h2><p>{selectedEvent?.title || "No event selected"} · live registrations</p></div><button className="secondary-button" type="button" onClick={onRefresh}><Icon>refresh</Icon> Refresh</button></div><div className="roster-toolbar"><span><Icon>database</Icon> {rosterLoading ? "SYNCING REGISTRATIONS" : `${roster.length} REGISTRATIONS`}</span><span className="read-only-label">READ ONLY</span></div>{error ? <div className="empty-panel">{error}</div> : <div className="table-scroll"><table><thead><tr><th>ATTENDEE &amp; ROLE</th><th>USER ID</th><th>REGISTRATION</th><th>STATUS</th></tr></thead><tbody>{roster.length ? roster.map((registration, index) => { const person = attendees.find((user) => String(user.id) === String(registration.user_id)); return <tr key={registration.id || `${registration.user_id}-${index}`}><td><b>{person?.email || `Attendee ${shortId(registration.user_id)}`}</b><small>Student // Campus member</small></td><td><code>{shortId(registration.user_id)}</code></td><td><code>{registration.created_at ? new Date(registration.created_at).toLocaleString() : "Confirmed"}</code></td><td><span className="status-tag confirmed"><i /> CONFIRMED</span></td></tr>; }) : <tr><td colSpan="4" className="table-empty">{rosterLoading ? "Loading attendee records…" : selectedEvent ? "No registrations for this event yet." : "No managed events found for this account."}</td></tr>}</tbody></table></div>}<div className="table-foot">REGISTRATION DATA FROM SUPABASE <span>PAGE 1 / 1</span></div></div>
       <aside className="console-rail"><section className="console-panel scanner-panel"><div className="panel-title-row"><div><h2><i className="mint-dot" /> Door scanner</h2><p>Check-in station status</p></div><span className="live-chip">API OFFLINE</span></div><div className="scanner-visual"><Icon>qr_code_scanner</Icon><b>NO CHECK-IN ENDPOINT</b><small>The connected API can list RSVPs but cannot record scans.</small></div><button className="secondary-button full-width" disabled type="button">Simulate check-in pass</button></section><section className="console-panel guard-panel"><div className="panel-title-row"><div><h2>Capacity guard</h2><p>Live event capacity</p></div><Icon>tune</Icon></div>{selectedEvent ? <><Capacity event={selectedEvent} /><div className="guard-row"><span>Maximum capacity</span><b>{selectedEvent.capacity ?? "Not set"}</b></div></> : <p>No event capacity to display.</p>}<button className="secondary-button full-width" disabled type="button" title="Capacity updates are not available in the connected API">Capacity edits unavailable</button></section><section className="console-panel broadcast-panel"><h2>Quick broadcast</h2><p>Broadcast messaging isn’t available in the connected API.</p><button className="secondary-button full-width" disabled type="button">Send broadcast unavailable</button></section></aside>
-    </section><section className="pipeline-section"><div className="panel-title-row"><div><h2>Pipeline events by organizer</h2><p>Events returned by the live campus API</p></div><span className="live-chip"><i /> {ownedEvents.length} EVENTS</span></div><div className="pipeline-grid">{ownedEvents.slice(0, 6).map((event) => <article className="pipeline-card" key={event.id}><span className="status-tag">{titleCase(event.status)}</span><code>{shortId(event.id)}</code><h3>{event.title}</h3><Capacity event={event} /></article>)}</div></section>
+    </section><OrganizerBrowse events={events} organizerId={selectedUser} registeredIds={registeredIds} onRegister={onRegister} pending={pending} /><section className="pipeline-section" id="organizer-events"><div className="panel-title-row"><div><h2>My events</h2><p>Create and manage events assigned to this organizer account.</p></div><span className="live-chip"><i /> {ownedEvents.length} EVENTS</span></div>{showEventForm && <form className="event-create-form" onSubmit={submitEvent}><div className="event-create-heading"><div><h3>Create a campus event</h3><p>Your organizer account will own this event and cannot RSVP to it.</p></div><Icon>event_available</Icon></div><label>EVENT TITLE<input id="event-create-title" required maxLength="120" value={newTitle} onChange={(event) => setNewTitle(event.target.value)} placeholder="e.g. Campus AI Workshop" /></label><label>CAPACITY<input required type="number" min="1" max="100000" step="1" value={newCapacity} onChange={(event) => setNewCapacity(event.target.value)} /></label>{createError && <div className="form-error" role="alert">{createError}</div>}<button className="primary-button" disabled={creating || !selectedUser} type="submit">{creating ? "CREATING EVENT…" : "CREATE EVENT"}</button></form>}{ownedEvents.length ? <div className="pipeline-grid">{ownedEvents.map((event) => <article className="pipeline-card" key={event.id}><span className="status-tag">{titleCase(event.status)}</span><code>{shortId(event.id)}</code><h3>{event.title}</h3><Capacity event={event} /></article>)}</div> : !loading && <div className="empty-panel">No events are assigned to this organizer yet. Create your first event above.</div>}</section>
   </main></div>;
 }
 
@@ -191,14 +230,34 @@ function App() {
 
   useEffect(() => {
     let active = true;
-    setLoading(true); setError(""); setConnection("CONNECTING");
+    if (!events.length) setLoading(true);
+    setError(""); setConnection("CONNECTING");
     Promise.all([api("/api/events"), api("/api/users")])
-      .then(async ([eventRows, userRows]) => {
-        const hydrated = await Promise.all(eventRows.map(async (event) => {
-          try { const rows = await api(`/api/events/${encodeURIComponent(event.id)}/registrations`); return { ...event, registrations: rows, registeredCount: rows.length, countKnown: true }; }
-          catch { return { ...event, registrations: [], registeredCount: null, countKnown: false }; }
+      .then(([eventRows, userRows]) => {
+        if (!active) return;
+        setUsers(userRows);
+        setEvents((current) => eventRows.map((event) => {
+          const previous = current.find((item) => String(item.id) === String(event.id));
+          return { ...event, registrations: previous?.registrations || [], registeredCount: previous?.registeredCount ?? null, countKnown: previous?.countKnown ?? null };
         }));
-        if (active) { setEvents(hydrated); setUsers(userRows); setConnection("LIVE NETWORK"); }
+        setConnection("LIVE NETWORK");
+        setLoading(false);
+        let nextIndex = 0;
+        async function hydrateWorker() {
+          while (nextIndex < eventRows.length) {
+            const index = nextIndex++;
+            const event = eventRows[index];
+            let updated;
+            try {
+              const rows = await api(`/api/events/${encodeURIComponent(event.id)}/registrations`);
+              updated = { registrations: rows, registeredCount: rows.length, countKnown: true };
+            } catch {
+              updated = { registrations: [], registeredCount: null, countKnown: false };
+            }
+            if (active) setEvents((current) => current.map((item) => String(item.id) === String(event.id) ? { ...item, ...updated } : item));
+          }
+        }
+        Promise.all(Array.from({ length: Math.min(4, eventRows.length) }, () => hydrateWorker())).catch(() => {});
       })
       .catch((loadError) => { if (active) { setError(loadError.message); setConnection("API OFFLINE"); } })
       .finally(() => { if (active) setLoading(false); });
@@ -216,7 +275,7 @@ function App() {
   useEffect(() => {
     let active = true;
     if (!selectedUser || role === "admin") { setRegistrations([]); return () => { active = false; }; }
-    api(`/api/me/registrations?user_id=${encodeURIComponent(selectedUser)}`).then((rows) => { if (active && role === "student") setRegistrations(rows); }).catch(() => { if (active) setRegistrations([]); });
+    api(`/api/me/registrations?user_id=${encodeURIComponent(selectedUser)}`).then((rows) => { if (active) setRegistrations(rows); }).catch(() => { if (active) setRegistrations([]); });
     return () => { active = false; };
   }, [selectedUser, role, refreshKey]);
 
@@ -234,19 +293,55 @@ function App() {
   function changeRole(nextRole) { setRole(nextRole); localStorage.setItem(ROLE_KEY, nextRole); setSelectedEventId(""); }
   function changeUser(value) { setSelectedUser(value); if (value) localStorage.setItem(USER_KEY, value); else localStorage.removeItem(USER_KEY); }
   async function registerForEvent(event) {
-    if (!selectedUser) { setToast("Select a student account before reserving a pass."); return; }
+    if (!selectedUser) { setToast("Select an account before reserving a pass."); return; }
+    if (String(event.organizer_id) === String(selectedUser)) {
+      setToast("Organizers cannot RSVP to events they created.");
+      return;
+    }
     const capacity = capacityFor(event);
-    if (!capacity || capacity.left <= 0) { setToast("This event is full or its seat count is unavailable."); return; }
+    if (capacity && capacity.left <= 0) { setToast("This event is full."); return; }
+    if (!Number(event.capacity)) { setToast("This event has no RSVP capacity configured."); return; }
     setPending(String(event.id));
-    try { await api("/api/registrations", { method: "POST", body: JSON.stringify({ user_id: selectedUser, event_id: event.id }) }); setToast("Your RSVP is confirmed."); setRefreshKey((key) => key + 1); }
-    catch (submitError) { setToast(submitError.message); }
+    try {
+      await api("/api/registrations", { method: "POST", body: JSON.stringify({ user_id: selectedUser, event_id: event.id }) });
+      setRegistrations((current) => current.some((registration) => String(registration.event_id) === String(event.id))
+        ? current
+        : [...current, { user_id: selectedUser, event_id: event.id }]);
+      setEvents((current) => current.map((item) => String(item.id) === String(event.id)
+        ? { ...item, registeredCount: item.countKnown ? (Number(item.registeredCount) || 0) + 1 : item.registeredCount, countKnown: item.countKnown }
+        : item));
+      setToast("Your RSVP is confirmed.");
+    }
+    catch (submitError) {
+      if (submitError.status === 409) {
+        setToast(submitError.message.toLowerCase().includes("already registered")
+          ? "This account already has an RSVP for this event. Your list is being synced."
+          : submitError.message);
+        api(`/api/me/registrations?user_id=${encodeURIComponent(selectedUser)}`)
+          .then((rows) => setRegistrations(rows))
+          .catch(() => {});
+      } else setToast(submitError.message);
+    }
     finally { setPending(""); }
+  }
+
+  async function createOrganizerEvent({ title, capacity }) {
+    if (role !== "organizer" || !selectedUser) throw new Error("Select an organizer account first.");
+    const created = await api("/api/events", {
+      method: "POST",
+      body: JSON.stringify({ title: title.trim(), capacity, organizer_id: selectedUser }),
+    });
+    const newEvent = { ...created, registrations: [], registeredCount: 0, countKnown: true };
+    setEvents((current) => [...current, newEvent].sort((left, right) => left.title.localeCompare(right.title)));
+    setSelectedEventId(String(created.id));
+    setToast(`${created.title} was created. Your organizer account cannot RSVP to it.`);
+    return created;
   }
 
   const studentUsers = users.filter((user) => user.role === "student");
   const roleUsers = users.filter((user) => user.role === role);
   const viewProps = { events, users, selectedUser, loading, error, onRefresh: () => setRefreshKey((key) => key + 1) };
-  return <><Header role={role} onRole={changeRole} user={selectedUser} users={roleUsers} onUser={changeUser} connection={connection} />{role === "student" ? <StudentView {...viewProps} registrations={registrations} registeredIds={registeredIds} onRegister={registerForEvent} pending={pending} /> : role === "organizer" ? <OrganizerView {...viewProps} users={users} selectedEventId={selectedEvent?.id || ""} onEvent={setSelectedEventId} roster={roster} rosterLoading={rosterLoading} /> : <AdminView {...viewProps} users={users} />}{toast && <div className="toast-message" role="status">{toast}</div>}</>;
+  return <><Header role={role} onRole={changeRole} user={selectedUser} users={roleUsers} onUser={changeUser} connection={connection} />{role === "student" ? <StudentView {...viewProps} registrations={registrations} registeredIds={registeredIds} onRegister={registerForEvent} pending={pending} /> : role === "organizer" ? <OrganizerView {...viewProps} users={users} selectedEventId={selectedEvent?.id || ""} onEvent={setSelectedEventId} roster={roster} rosterLoading={rosterLoading} onCreateEvent={createOrganizerEvent} registeredIds={registeredIds} onRegister={registerForEvent} pending={pending} /> : <AdminView {...viewProps} users={users} />}{toast && <div className="toast-message" role="status">{toast}</div>}</>;
 }
 
 export default App;

@@ -36,6 +36,7 @@ def database_error(error):
 def index():
     return jsonify({"message": "Campus events API", "endpoints": [
         "/api/users", "/api/events", "/api/events/<id>",
+        "/api/events (POST)",
         "/api/registrations", "/api/me/registrations",
         "/api/events/<id>/registrations",
     ]})
@@ -59,6 +60,52 @@ def list_events():
     try:
         response = supabase.table("events").select("*").order("title")
         return jsonify(response.execute().data)
+    except APIError as error:
+        return database_error(error)
+
+
+@app.post("/api/events")
+def create_event():
+    """Create a campus event for an existing organizer account."""
+    body = request.get_json(silent=True)
+    if not isinstance(body, dict):
+        return jsonify({"error": "Request body must be a JSON object"}), 400
+
+    title = body.get("title")
+    organizer_id = body.get("organizer_id")
+    capacity = body.get("capacity")
+    if not isinstance(title, str) or not title.strip():
+        return jsonify({"error": "title is required"}), 400
+    if not organizer_id:
+        return jsonify({"error": "organizer_id is required"}), 400
+    if isinstance(capacity, bool) or not isinstance(capacity, int) or capacity < 1:
+        return jsonify({"error": "capacity must be a positive whole number"}), 400
+
+    try:
+        organizer = (
+            supabase.table("users")
+            .select("id,role")
+            .eq("id", organizer_id)
+            .maybe_single()
+            .execute()
+        )
+        if organizer.data is None or organizer.data.get("role") != "organizer":
+            return jsonify({"error": "Organizer account not found"}), 404
+
+        created = (
+            supabase.table("events")
+            .insert({
+                "title": title.strip(),
+                "capacity": capacity,
+                "organizer_id": organizer_id,
+                "status": "upcoming",
+            })
+            .execute()
+        )
+        row = created.data[0] if created.data else None
+        if row is None:
+            return jsonify({"error": "Event could not be created"}), 500
+        return jsonify(row), 201
     except APIError as error:
         return database_error(error)
 
@@ -92,15 +139,31 @@ def create_registration():
         return jsonify({"error": "user_id and event_id are required"}), 400
 
     try:
+        user_response = (
+            supabase.table("users")
+            .select("id,role")
+            .eq("id", user_id)
+            .maybe_single()
+            .execute()
+        )
+        if user_response.data is None:
+            return jsonify({"error": "User account not found"}), 404
+
         event_response = (
             supabase.table("events")
-            .select("id,capacity")
+            .select("id,capacity,organizer_id")
             .eq("id", event_id)
             .maybe_single()
             .execute()
         )
         if event_response.data is None:
             return jsonify({"error": "Event not found"}), 404
+
+        # Organizer accounts cannot RSVP to events they own.
+        if str(event_response.data.get("organizer_id")) == str(user_id):
+            return jsonify({"error": "Organizers cannot register for their own event"}), 403
+        if user_response.data.get("role") not in {"student", "organizer"}:
+            return jsonify({"error": "This account type cannot register for events"}), 403
 
         existing = (
             supabase.table("registrations")

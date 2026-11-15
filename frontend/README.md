@@ -38,3 +38,19 @@ The build is written to `frontend/dist` and calls the Render API at
 
 For a different API host, set `VITE_API_BASE` in the frontend build environment.
 The backend's `CORS_ORIGINS` setting must include the deployed frontend's origin.
+
+## Deploy the frontend on Vercel
+
+1. Import the GitHub repository into Vercel.
+2. Set **Root Directory** to `frontend`.
+3. Keep the build command as `npm run build` and output directory as `dist`;
+   `vercel.json` supplies these settings and the single-page-app rewrite.
+4. Add `VITE_API_BASE` in Vercel's Environment Variables, with the value
+   `https://hyderabad-proj.onrender.com`. Enable it for Production and Preview.
+5. Deploy the frontend, then add its Vercel domain to the Render backend's
+   `CORS_ORIGINS` environment variable. Use comma-separated origins if you also
+   have a custom domain, with no trailing slash.
+
+The organizer event form uses `POST /api/events`; deploy the matching backend
+change to Render before using that form. Keep `SUPABASE_URL` and
+`SUPABASE_PUBLISHABLE_KEY` in Render only; they do not belong in Vercel.

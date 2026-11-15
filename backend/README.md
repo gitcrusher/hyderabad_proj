@@ -45,6 +45,15 @@ then available at `http://127.0.0.1:5000`.
 - `GET /api/users?role=student`
 - `GET /api/events`
 - `GET /api/events/<id>`
+- `POST /api/events` with `{ "title": "...", "capacity": 100, "organizer_id": "..." }`
 - `POST /api/registrations` with JSON `{ "user_id": "...", "event_id": "..." }`
 - `GET /api/me/registrations?user_id=<id>`
 - `GET /api/events/<id>/registrations`
+
+Event creation validates that `organizer_id` belongs to an organizer account.
+Registration creation rejects a `user_id` equal to the event's `organizer_id`,
+so an organizer cannot RSVP to their own event.
+
+This demo API does not authenticate callers. The role picker in the frontend is
+not a login system; for a public production deployment, add Supabase Auth and
+verify the caller's JWT before allowing event creation or registration.
